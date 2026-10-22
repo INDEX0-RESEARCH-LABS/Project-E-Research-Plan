@@ -98,7 +98,7 @@ M5: 0.5kg/kW: 242 / 303              | 1.0kg/kW: 249 / 311  | 1.5kg/kW: 256 / 31
 
 **Consequence:** the widely quoted “M1 needs ~690 Wh/kg pack” is *conditional* on 1.5 kg/kW. At a measured 0.5 kg/kW converter it is ~510 Wh/kg. Both are above current packs, so the M1 verdict does not flip — but the M3 verdict does: at 0.5 kg/kW, M3 needs 186 Wh/kg pack, which is inside current premium Li-ion. **M3 is the mission where a conventional system is closest to feasible, and its verdict depends on a missing datasheet.**
 
-The M1 band is also conditional on **10 kWh delivered**. The repository config defines 1 kW × 8 h = **8 kWh** (`REPOSITORY_AUDIT.md` D16); on that basis the required pack is **408–553 Wh/kg** and the cell 510–691 Wh/kg. The verdict is unchanged, but the headline gap narrows by 20%. The mission energy must be fixed before Gate 3.
+The band uses the benchmark's **10 kWh** mission: 8 kWh base plus 2 kWh of pulses (`dispatch.py:39–41`). That is internally consistent.
 
 A supplier-grade converter mass is therefore a Gate 3 priority, not a detail.
 

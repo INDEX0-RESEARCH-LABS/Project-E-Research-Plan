@@ -267,7 +267,7 @@ A stop is a result, not a failure. The negative record is preserved.
 ## 14. First seven days (no spend)
 
 1. Freeze and re-verify the Project-E commit and test count (already `e75be96`, 57 tests).
-2. Resolve D16: config 1 kW × 8 h = 8 kWh vs 10 kWh sizing; record the decision.
+2. Close D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`).
 3. Repair or explicitly accept the M2 and M5 target inconsistencies.
 4. Obtain three datasheets: a 6 kW inverter, a 30 kW inverter, and a 10 kWh LFP/NMC pack. Record them in `SOURCE_VERIFICATION.md`.
 5. Add page/figure locators for S01, S04, N01, N02, N08.

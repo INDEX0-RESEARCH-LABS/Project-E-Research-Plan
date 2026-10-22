@@ -46,11 +46,9 @@ For a **storage** candidate, the charging source is outside the boundary during 
 | **M4** | Stationary heat-to-power | 80 MWh/y (10 kWe × 8,000 h) | 10 kW | 10 kW | ≤$1/W, 20 y | 20 y | external heat declared but excluded; converter, cooling, grid interface included |
 | **M5** | Bulk stationary | 4 MWh / 4 h | 1 MW | 1 MW | ≤25,000 kg, ≤40 m³, ≤$120/kWh, ≤$0.08/kWh | 15 y | grid-connected; charging cost included |
 
-### 2.1 Mission-energy ambiguity to resolve
+### 2.1 Mission energy is consistent at 10 kWh
 
-The repository config says **1 kW continuous for 8 h** (`configs/baseline.yaml:9–15`), which is **8 kWh delivered**, while the sizing document uses **10 kWh delivered** (`ARCHITECTURE_COMPARISON.md:41`). The vision repeated the 1 kW wording. This is audit finding **D16**.
-
-The mission matrix keeps **10 kWh** because that is what the benchmark actually sizes. If the owner confirms 8 kWh, every M1 energy term falls by 20% and the required pack becomes **408–553 Wh/kg** (0.5–1.5 kg/kW converter) instead of 510–691 Wh/kg. The pass/fail verdict does not change, but the headline gap does. The requirement must be fixed before Gate 3; it is a documentation defect, not a physics issue.
+The config's **1 kW continuous** is the base load. The 6 kW / 30 s pulse every 600 s adds 5 kW × 30/600 = **0.25 kW average**, so the mission is **8 kWh base + 2 kWh pulse = 10 kWh**, average **1.25 kW** (`dispatch.py:39–41`). The earlier “8 vs 10 kWh” flag (audit D16) is **withdrawn**; the arithmetic closes exactly. No M1 mass or pack-band number changes.
 
 ---
 

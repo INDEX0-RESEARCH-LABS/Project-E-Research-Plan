@@ -42,7 +42,7 @@ Ranking is by **system leverage** (how much the mission verdict moves per unit o
 
 | Rank | Bottleneck | Quantitative evidence | Type | Missions affected | Leverage | Cheapest decisive evidence |
 |---:|---|---|---|---|---|---|
-| **B1** | Storage specific energy | M1 needs 510–691 Wh/kg pack (638–864 cell; 408–553 on the repo’s 8 kWh config); best credible 150–250 pack; M2 needs 1,112–1,127 pack | Fundamental materials + engineering | M1, M2, M5 | **Very high** | Supplier datasheets + 1–2 cell tests |
+| **B1** | Storage specific energy | M1 needs 510–691 Wh/kg pack (638–864 cell); best credible 150–250 pack; M2 needs 1,112–1,127 pack | Fundamental materials + engineering | M1, M2, M5 | **Very high** | Supplier datasheets + 1–2 cell tests |
 | **B2** | Source energy density and fuel logistics | Diesel 3.6 kWh/kg fuel at 30% vs Li-ion 0.15–0.25 kWh/kg pack; M2 battery needs 3,770 kg vs diesel ~165 kg | Fundamental source choice + engineering | M2, M1 | **Very high** | Paper comparison + fuel-price quotes |
 | **B3** | Heat rejection | M4 10 kWe at 25% rejects 30 kW → 30 m² forced air, ~150 kg; M1 diesel 3.5 kW → ΔT 76 K in 60 L | Fundamental (conservation) + engineering (h, fins) | M4, M1-diesel, M3 | **High** | Thermal bench + CFD only after lumped model |
 | **B4** | Converter specific mass | 1.5 kg/kW is 40% of M1 and 59% of M3 mass budget; 0.5 kg/kW flips M3 from 355 to 186 Wh/kg pack | **Assumption**, not measured | M1, M3 | **High** | One supplier datasheet + one measured inverter |
@@ -161,7 +161,7 @@ Each of these is a measurement, not an opinion. The map is designed to be revise
 
 ## 8. Bottom line
 
-- **M1 is storage-, volume-, and cost-bound simultaneously.** No known component closes it; the gap is 2–4× (1.6–3.7× on the 8 kWh reading), not 10%.
+- **M1 is storage-, volume-, and cost-bound simultaneously.** No known component closes it; the gap is 2–4×, not 10%.
 - **M2 is source-bound.** Batteries are impossible; diesel is mass-feasible but cost/heat/emission-limited; nuclear is mass-plausible but regulation-bound.
 - **M3 is converter- and heat-bound.** It is the closest to conventional feasibility and the most sensitive to a missing datasheet.
 - **M4 is heat-bound.** The external heat source is not free; 30 kW of waste heat is a 15–30 m² radiator.

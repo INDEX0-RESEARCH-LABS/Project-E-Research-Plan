@@ -53,7 +53,7 @@
 | N-27 | M2's capex and LCOE targets are mutually inconsistent | M2; 30-day missions; 10-year life | $50,000 over 122 missions × 360 kWh = $1.14/kWh capital alone; $0.50 needs capex ≤$21,960 | A revised M2 capex/life/LCOE target |
 | N-28 | M5's LCOE target is below its charging cost | M5; grid charging | $0.10/kWh charging > $0.08/kWh target; at $0.05 charging + $0.03 capital = ~$0.086 | Cheaper charging or a higher LCOE target |
 | N-29 | The pulse buffer does not pay for itself at current components | M1/M3 pulse | Supercap 0.05 kWh at 6 Wh/kg = 8.3 kg; converter saving 8.9 kg; net ~0.6 kg | A supercap ≥13 Wh/kg or a smaller pulse energy |
-| N-30 | The M1 “510–691 Wh/kg pack” band is conditional on 10 kWh delivered | M1 storage | Repo config says 1 kW × 8 h = 8 kWh; on 8 kWh the band is 408–553 Wh/kg (0.5–1.5 kg/kW). Verdict unchanged; headline changes 20% | A fixed mission energy (8 or 10 kWh) confirmed by the owner |
+| N-30 | The reported “8 vs 10 kWh” mission inconsistency was a misread | M1 mission definition | 6 kW pulses add 5 kW × 30/600 × 8 h = 2 kWh; 8 + 2 = 10 kWh, 1.25 kW average. D16 withdrawn; 510–691 Wh/kg band unchanged | None; arithmetic closed |
 
 
 ---

@@ -169,7 +169,7 @@ Range ≈ **110–144 kg** from declared input ranges alone. The 35 kg target is
 ## 10. What this screen establishes
 
 1. The repository's A1 result is reproducible at the dominant-term level under its stated 175 Wh/kg basis and 1.25 packaging: ~118 kg.
-2. The M1 35 kg target requires roughly **690–700 Wh/kg pack-level or ~865–870 Wh/kg cell-level** at 1.5 kg/kW and 10 kWh, with no margin, cooling, or 10-year degradation. The band is **510–691 Wh/kg pack** over 0.5–1.5 kg/kW, and **408–553 Wh/kg** if the repository's 1 kW × 8 h = 8 kWh config is authoritative (D16). No such pack is demonstrated or purchasable as a system.
+2. The M1 35 kg target requires roughly **690–700 Wh/kg pack-level or ~865–870 Wh/kg cell-level** at 1.5 kg/kW and 10 kWh, with no margin, cooling, or 10-year degradation. The band is **510–691 Wh/kg pack** over 0.5–1.5 kg/kW. No such pack is demonstrated or purchasable as a system.
 3. Under the repository's 300 W/kg **continuous** pack rating, A1's floor is ~40 kg at 0.5 h and ~118 kg at 8 h. The 8 h M1 mission cannot reach 35 kg; this is a model assumption, not a universal physical limit. A pulse-rated sensitivity (600–1,000 W/kg for 30 s) is required before treating the floor as universal.
 4. C2 diesel is ~49–50 kg and fuel-limited above $0.40/kWh at $1.40/L.
 5. C1 PEM is ~56 kg and fails H5 at $6/kg H2; it is a benchmark row, not a viable M1 candidate at current price.

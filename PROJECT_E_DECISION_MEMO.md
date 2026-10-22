@@ -28,7 +28,6 @@
 | No benchmark architecture meets all M1 targets | Repository results; best score 3/5 | High |
 | A1 cannot reach 35 kg at 175 Wh/kg | 118.3 kg screen; 83.5 kg cells + 11.25 kg converter + packaging | High (arithmetic) |
 | M1 at 35 kg needs **510–691 Wh/kg pack** (638–864 cell) depending on converter mass | `limits.py`; 1.5 vs 0.5 kg/kW; 10 kWh basis | High (conditional on assumptions) |
-| If the repo’s 1 kW × 8 h = 8 kWh config is authoritative, M1 needs 408–553 Wh/kg pack | Audit D16; 20% lower energy | High (arithmetic); verdict unchanged |
 | No demonstrated pack is at 500–700 Wh/kg | Best credible 150–250 Wh/kg pack (E1; no datasheet) | Medium-high |
 | M1’s 690 Wh/kg headline is **conditional**, not a physical law | Converter 1.5 kg/kW is an assumption | High |
 | M2 is source-bound: battery needs 1,112–1,127 Wh/kg pack; diesel is ~165 kg | `limits.py`; diesel 3.6 kWh/kg fuel at 30% | High (screening) |
@@ -47,7 +46,7 @@
 
 ### Q1. What is the most ambitious version of the vision that remains scientifically defensible?
 
-**A 10 kWh / 6 kW / 8 h unit at 35 kg is not defensible with known storage.** It requires 510–691 Wh/kg pack (638–864 Wh/kg cell), roughly 2–4× the best credible pack, before margin, cooling, or 10-year degradation. If the repository’s 1 kW × 8 h = 8 kWh config is authoritative, the requirement falls to 408–553 Wh/kg pack; the verdict is still “not with known storage,” but the gap is 1.6–3.7× rather than 2.0–4.6×.
+**A 10 kWh / 6 kW / 8 h unit at 35 kg is not defensible with known storage.** It requires 510–691 Wh/kg pack (638–864 Wh/kg cell), roughly 2–4× the best credible pack, before margin, cooling, or 10-year degradation.
 
 The defensible ambitious target is:
 
@@ -199,7 +198,7 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 ### Q12. What should the project do during its first seven days?
 
 1. Re-verify `e75be96` and the 57 tests; archive the output.
-2. Resolve D16: the config’s **1 kW × 8 h = 8 kWh** vs the **10 kWh** sizing; record which is authoritative.
+2. Record D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`); no mission change.
 3. Repair or explicitly accept the M2 and M5 target inconsistencies.
 4. Obtain three datasheets: 6 kW inverter, 30 kW inverter, 10 kWh LFP/NMC pack.
 5. Add page/figure locators for S01, S04, N01, N02, N08.
