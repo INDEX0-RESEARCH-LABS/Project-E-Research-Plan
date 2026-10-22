@@ -31,6 +31,8 @@
 | M16 | Thermionic / AMTEC | Conversion | Heat → electrons/electrochemical → electricity | Laboratory devices; niche space | Cathode/electrode life; high T; low power density | High-T materials, seals, radiator | Detailed review pending | M4/M2 niche | <15% or <5,000 h life |
 | M17 | CAES / pumped hydro | Storage | Grid electricity → compressed air/water → turbine | Grid-scale commercial | Site/scale; containment; efficiency; geography | Pressure vessel/reservoir, turbine, generator | S06, S08, S10, N06, N07 | Grid, not portable | Cannot fit 35 kg / 60 L |
 | M18 | LENR / over-unity / zero-point | Negative control | Unknown | No reproducible peer-reviewed demonstration | Conservation violation if net output; calibration/background | Unknown | N12 (negative review) | None until a reproducible claim | Any net output without source; no replication |
+| M19 | Free-piston / microturbine | Generation | Fuel → combustor → free piston/turbine → linear or high-speed alternator → load | Laboratory free-piston units; commercial microturbines at larger scale | Combustion stability, seals, alternator mass, emissions, part-load | Enclosure, noise, emissions, controls, radiator | No verified source yet; E0/E1 | Compact M1/M3 multi-fuel generator | <20% efficiency, >5 kg/kW, <100 h life, unacceptable emissions |
+| M20 | Latent-heat (PCM) store | Storage | Heat → phase change → heat exchanger → TPV/ORC | Commercial PCMs; thermal-storage plants | Conductivity, phase separation, corrosion, encapsulation | Heat exchanger, containment, insulation | S09; E1* | M4 store with stable delivery temperature | <0.10 kWh/kg usable or heat exchanger >30% of mass |
 
 ---
 

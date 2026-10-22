@@ -1,4 +1,4 @@
-# Project E — Computational Plan
+# Project E — Computational Research Plan
 
 **Version:** 0.1  
 **Date:** 2026-10-23  
@@ -26,7 +26,7 @@ Computation is **not** used to claim a device works, to replace a measurement, o
 | Level | Model | Purpose | Acceptance |
 |---|---|---|---|
 | L0 | Closed-form energy/mass/heat bounds | Kill impossible candidates before coding | Units checked; Carnot/thermodynamic limits enforced |
-| L1 | Spreadsheet/Python system build-up | Compare M1–M4 at one boundary | Reproduces L0; every input has evidence level |
+| L1 | Spreadsheet/Python system build-up | Compare M1–M5 at one boundary | Reproduces L0; every input has evidence level |
 | L2 | Time-series dispatch | Pulse load, buffer SOC, fuel use, part-load efficiency | Energy closure ≤1e-6; timestep convergence |
 | L3 | Thermal/radiator model | Coolant, heat rejection, radiator area/mass | Lumped model vs analytical; sensitivity to h, emissivity |
 | L4 | Cost/LCOE model | Capex, fuel, replacement, discount rate | Separate estimate/quote/unknown; sensitivity |
@@ -92,8 +92,8 @@ Rules:
 
 ## 6. Computational sequence
 
-1. **L0 bounds** for M1–M4: storage, converter, source, heat, cost.
-2. **L1 build-up** for H1–H8; reproduce the Gate 2 screen.
+1. **L0 bounds** for M1–M5: storage, converter, source, heat, cost.
+2. **L1 build-up** for H1–H11; reproduce the Gate 2 screen.
 3. **L2 dispatch** only for candidates that pass L0/L1.
 4. **L3 thermal** for the best two; radiator and pump power included.
 5. **L4 cost** with scenario ranges, not point estimates.
@@ -116,7 +116,7 @@ Rules:
 
 | Deliverable | Gate | Status |
 |---|---|---|
-| L0 screening table | 2 | v0.1 done (`GATE2_SCREENING.md`) |
+| L0 screening table | 2 | v0.2 done (`GATE2_SCREENING.md`, `limits.py`) |
 | L1 build-up workbook | 2–3 | pending |
 | L2 dispatch model | 3–4 | pending |
 | L3 thermal model | 4 | pending |

@@ -5,6 +5,8 @@
 **Repository audited:** `e75be96` (unchanged)  
 **Companion files:** `REPOSITORY_AUDIT.md`, `SOURCE_VERIFICATION.md`, `HYPOTHESIS_REGISTER.csv`
 
+> **Superseded working annex (2026-10-23).** The canonical gate package is the 15 documents listed in `PROJECT_E_DECISION_MEMO.md` §7. Where this older plan differs, the newer documents control. In particular: §7.2's 12.7 kWh nameplate and its ">500 Wh/kg pack" floor are superseded by `SYSTEM_LIMITS.md` §3 (14.62 kWh nameplate; 510–691 Wh/kg pack depending on converter mass); §7.2's 0.28 kWh/kg graphite figure is full-swing sensible heat and is superseded by `SYSTEM_LIMITS.md` §2 and `GATE2_SCREENING.md` §6 (0.06–0.10 kWh/kg usable at ≥1500 °C). This file is retained for provenance, not as the current plan.
+
 ---
 
 ## 1. Executive verdict

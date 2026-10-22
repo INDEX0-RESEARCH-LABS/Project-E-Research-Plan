@@ -40,14 +40,14 @@ No experiment starts until:
 
 | Stage | Question | Cheapest test | Decision |
 |---|---|---|---|
-| E0 | Is the pack/converter pulse claim real? | One representative pack + converter, 6 kW / 30 s pulses, thermal sensors | If voltage sag, temperature, or efficiency misses the model, revise or kill |
-| E1 | Is the converter mass/efficiency real? | Bench converter at 10–120% load, 25–45 °C | If efficiency <90% or packaged mass >2.0 kg/kW (baseline 1.875), revise |
-| E2 | Does the thermal loop reject the heat? | Cold plate + radiator + pump at design heat load | If radiator area/mass exceeds envelope, revise |
-| E3 | Does the fuel cell/tank meet startup and mass? | Stack + representative tank, not a full system | If startup >10 min, or M1 system >35 kg (M2 >500 kg), park |
-| E4 | Does the TPV/TEG survive? | Small-area module at temperature, 100 h | If degradation >5% or efficiency <15%, park |
-| E5 | Does the integrated system close? | Full unit at M1 profile, instrumented | Only if E0–E4 pass |
+| 1 | Is the pack/converter pulse claim real? | One representative pack + converter, 6 kW / 30 s pulses, thermal sensors | If voltage sag, temperature, or efficiency misses the model, revise or kill |
+| 2 | Is the converter mass/efficiency real? | Bench converter at 10–120% load, 25–45 °C | If efficiency <90% or packaged mass >2.0 kg/kW (baseline 1.875), revise |
+| 3 | Does the thermal loop reject the heat? | Cold plate + radiator + pump at design heat load | If radiator area/mass exceeds envelope, revise |
+| 4 | Does the fuel cell/tank meet startup and mass? | Stack + representative tank, not a full system | If startup >10 min, or M1 system >35 kg (M2 >500 kg), park |
+| 5 | Does the TPV/TEG survive? | Small-area module at temperature, 100 h | If degradation >5% or efficiency <15%, park |
+| 6 | Does the integrated system close? | Full unit at M1 profile, instrumented | Only if Stages 1–5 pass |
 
-E0 is the highest-value first test because the 6 kW pulse and converter are the binding terms in the benchmark.
+Stage 1 is the highest-value first test **if** a representative pack and converter are already available; otherwise the datasheet and supplier quotation come first. The 6 kW pulse and converter are the binding terms in the benchmark.
 
 ---
 

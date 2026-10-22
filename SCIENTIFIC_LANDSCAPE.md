@@ -1,4 +1,4 @@
-# Project E — Research Landscape v0.1
+# Project E — Scientific Landscape
 
 **Status:** Gate 1 draft; not complete  
 **Date:** 2026-10-23  
@@ -25,7 +25,7 @@ This document maps what is established, what is demonstrated, what is limited, a
 
 **Opportunity.** Cell-to-pack engineering, higher-energy chemistries, and a relaxed pulse requirement. Not a new source.
 
-**Disproof.** A measured pack below 250 Wh/kg at C/2, below 500 cycles, or above $400/kWh would kill the M1 storage case.
+**Disproof.** A measured pack below **510 Wh/kg** (0.5 kg/kW converter) or **691 Wh/kg** (1.5 kg/kW) kills M1; below 250 Wh/kg it also fails the H1 component milestone. A 250 Wh/kg pack is a useful component result, **not** an M1 solution.
 
 **Evidence.** S04, N01; E1*.
 
@@ -223,7 +223,7 @@ This document maps what is established, what is demonstrated, what is limited, a
 
 **Limits.** Insulation loss, heat-transfer rate, containment, volume.
 
-**Opportunity.** M4 TPV/ORC storage; B3's 0.28 kWh/kg is optimistic without standby loss.
+**Opportunity.** M4 TPV/ORC storage; B3's 0.28 kWh/kg is full-swing sensible heat, not usable at a ≥1500 °C emitter. The usable value is 0.06–0.10 kWh/kg, so the store is 484–806 kg for 10 kWh electric — a 3–5× correction.
 
 **Evidence.** S08, S09.
 

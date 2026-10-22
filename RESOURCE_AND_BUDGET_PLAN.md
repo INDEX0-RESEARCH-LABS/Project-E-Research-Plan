@@ -14,7 +14,7 @@ A staged, fail-fast research budget. It buys evidence, not a device. Each tier i
 
 | Tier | Purpose | Gate | Range (₹) | USD equivalent at the stated rate |
 |---|---|---|---:|---:|
-| T0 | Paper, data, models, independent review | 0–2 | ₹0–₹1,50,000 | $0–$1,586 |
+| T0 | Paper, data, models, independent review | 0–3 | ₹0–₹2,00,000 | $0–$2,114 |
 | T1 | Component characterization | 3–4 | ₹25,00,000–₹70,00,000 | $26,430–$74,000 |
 | T2 | Bench prototype and integrated test | 4–5 | ₹55,00,000–₹1,30,00,000 | $58,145–$137,430 |
 | T3 | Independent validation and field-relevant test | 6 | ₹1,06,00,000–₹2,56,00,000 | $1,12,060–$2,70,640 |
@@ -23,13 +23,13 @@ These are **ranges**, not quotations. A real budget requires vendor quotes, a fa
 
 ---
 
-## 2. T0 — paper and data (₹0–1.5 lakh)
+## 2. T0 — paper, data, and review (₹0–2 lakh)
 
 | Item | Estimate (₹) | Basis | Status |
 |---|---:|---|---|
 | Literature access / interlibrary | 0–15,000 | Open access + institutional access | Estimate |
 | DOI/standards documents | 10,000–40,000 | Standards and paywalled papers | Unknown; quote needed |
-| Independent reviewer honorarium | 20,000–50,000 | 2–3 days | Estimate |
+| Independent reviewer honorarium | 40,000–70,000 | 2 reviewers, 2–3 days each | Estimate |
 | Small consumables / printing | 5,000–15,000 | — | Estimate |
 | Contingency 10% | — | — | — |
 

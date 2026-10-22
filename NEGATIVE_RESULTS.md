@@ -48,6 +48,12 @@
 | N-22 | C1 fails H5 at the baseline H2 price | M1; $6/kg H2 | H5 kill: H2 > $4/kg; repo C1 uses $6/kg | H2 ≤ $4/kg delivered, or a tank/stack improvement that offsets cost |
 | N-23 | A2 and the supercapacitor buffer fail H7 | M1 pulse buffer | Supercap 0.05 kWh at 6 Wh/kg = 8.3 kg; H7 kill is >5 kg | A >100 Wh/kg supercap or a smaller pulse energy, with safe packaging |
 | N-24 | B3 fails H4 on store density | M4; external heat | Usable 0.06–0.10 kWh/kg vs H4 ≥1 kWh/kg | A usable store ≥1 kWh/kg at ≥1500 °C emitter temperature |
+| N-25 | The “690 Wh/kg pack” M1 figure is conditional | M1; 1.5 kg/kW converter | 691 Wh/kg at 1.5 kg/kW; 510 Wh/kg at 0.5 kg/kW; both above current packs | A measured converter and a pack in the 510–691 Wh/kg band |
+| N-26 | H1's ≥250 Wh/kg pack milestone does not meet M1 | M1 storage | At 250 Wh/kg pack, M1 is ~72 kg; M1 needs 510–691 Wh/kg pack | A pack in the M1 band, not merely a 250 Wh/kg component result |
+| N-27 | M2's capex and LCOE targets are mutually inconsistent | M2; 30-day missions; 10-year life | $50,000 over 122 missions × 360 kWh = $1.14/kWh capital alone; $0.50 needs capex ≤$21,960 | A revised M2 capex/life/LCOE target |
+| N-28 | M5's LCOE target is below its charging cost | M5; grid charging | $0.10/kWh charging > $0.08/kWh target; at $0.05 charging + $0.03 capital = ~$0.086 | Cheaper charging or a higher LCOE target |
+| N-29 | The pulse buffer does not pay for itself at current components | M1/M3 pulse | Supercap 0.05 kWh at 6 Wh/kg = 8.3 kg; converter saving 8.9 kg; net ~0.6 kg | A supercap ≥13 Wh/kg or a smaller pulse energy |
+| N-30 | The M1 “510–691 Wh/kg pack” band is conditional on 10 kWh delivered | M1 storage | Repo config says 1 kW × 8 h = 8 kWh; on 8 kWh the band is 408–553 Wh/kg (0.5–1.5 kg/kW). Verdict unchanged; headline changes 20% | A fixed mission energy (8 or 10 kWh) confirmed by the owner |
 
 
 ---
@@ -60,6 +66,8 @@
 | C-02 | “1.5 kg/kW gives 11.25 kg at 6 kW” | 11.25 kg includes the 1.25 packaging factor: 1.5 × 6 × 1.25 | Documented as audit note D12; code is consistent |
 | C-03 | Converter mass first screen 9.0 kg | Used 1.5 × 6 without packaging; corrected to 11.25 kg | Corrected in v0.2 |
 | C-04 | Diesel 2.0 kW row 51.4 kg | 2.0 kW was a source size, not a 2 kW peak mission; row removed to avoid a category error | Corrected in v0.2 |
+| C-05 | “H1 would need ≥250 Wh/kg pack” | 250 Wh/kg is a component milestone, not an M1 pass; M1 needs 510–691 Wh/kg pack depending on converter mass | Corrected in v0.3 |
+| C-06 | 12.7 kWh M1 nameplate in the master plan | With 0.95 converter × 0.80 DoD × 0.90 round-trip, nameplate is 14.62 kWh; the older 12.7 figure used a different chain | Superseded in `SYSTEM_LIMITS.md` §3 |
 
 ---
 

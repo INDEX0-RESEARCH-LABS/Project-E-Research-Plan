@@ -28,7 +28,7 @@ That is a useful **negative result and Track A benchmark**. It is not the origin
 
 | Area | Implementation | What it supports | What it does not support |
 |---|---|---|---|
-| Mission and dispatch | `src/project_e/simulation/dispatch.py`; 1 s timestep, convergence checked at 2 s and 0.5 s | 1 kW continuous, 6 kW / 30 s pulses, 8 h; energy closure | Electrical dynamics, start transients, converter control, fault ride-through |
+| Mission and dispatch | `src/project_e/simulation/dispatch.py`; 1 s timestep, convergence checked at 2 s and 0.5 s | Config says 1 kW continuous, 6 kW / 30 s pulses, 8 h (= 8 kWh), but sizing uses 10 kWh; see D16 | Electrical dynamics, start transients, converter control, fault ride-through |
 | Storage | `src/project_e/models/storage.py` | LiFePO4 pack SOC, power limits, round trip, fade; supercapacitor energy/ESR | Cell-level electrochemistry, thermal runaway, BMS, second-life, real C-rate curves |
 | Conversion | `src/project_e/models/conversion.py` | Carnot, TEG, heat engine, TPV parameterisation, PV temperature derating, fuel flow | Nuclear, solar system, fusion, thermionic, AMTEC, metal-air, Li-S, SOFC, part-load maps |
 | Thermal | `src/project_e/models/thermal.py` | Lumped mass, conduction, convection, radiation, ε-NTU, pump parasitic | Transient thermal, CFD, hot-spot/spatial gradients, two-phase cooling |
@@ -161,6 +161,10 @@ Consequence: "B3 is cheapest in 83% of draws" is a statement about assumed unifo
 ### D15 — C2 diesel fuel mass is packaged twice
 
 In `diesel_hybrid` (`architectures.py:509–514`), the fuel mass is multiplied by 1.25 inside `mass_kg`, and `_hybrid` (`:423`) applies the packaging factor again. The effect is ~1.0 kg on C2 (repo 50.3 kg versus one-pass 49.3 kg). Small, but it violates the "packaging applied once" rule the comparison claims.
+
+### D16 — Mission energy is 8 kWh in the config but 10 kWh in the sizing
+
+`configs/baseline.yaml:9–15` defines the mission as **1 kW continuous for 8 h**, which is **8 kWh delivered**. `docs/ARCHITECTURE_COMPARISON.md:41` sizes A1 for **10 kWh delivered** (`10/0.95/(1−0.20) = 13.16 kWh`). The two cannot both be right. At 1 kW × 8 h, A1 would be ~97 kg, not 118.4 kg, and the M1 required pack would be ~408–553 Wh/kg (0.5–1.5 kg/kW converter) rather than 510–691 Wh/kg. The pass/fail verdict is unchanged (both are above current packs), but the headline gap and every M1 mass quote change by ~20%. This is a decision-critical documentation/definition defect, not a rounding issue. The requirement must choose 1.25 kW average (10 kWh) or 8 kWh.
 
 ---
 

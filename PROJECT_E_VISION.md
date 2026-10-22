@@ -84,7 +84,7 @@ A breakthrough is a possible outcome, not a promised deliverable.
 | **E — Experiments** | Run the smallest falsifiable test | Start with hardware |
 | **F — Translation** | Packaging, cost, manufacturing, safety, IP | Override scientific conclusions |
 
-The benchmark mission (M1: 1 kW continuous, 6 kW pulse, 8 h, 35 kg / 60 L / $5,000 / $0.40 per kWh) is retained as **one provisional case**, not as the definition of Project E.
+The benchmark mission (M1: 10 kWh over 8 h — 1.25 kW average — 6 kW pulse, 35 kg / 60 L / $5,000 / $0.40 per kWh) is retained as **one provisional case**, not as the definition of Project E. The repository config’s “1 kW continuous” wording gives 8 kWh; the 8 vs 10 kWh ambiguity is audit finding D16 and must be resolved before Gate 3.
 
 ---
 
