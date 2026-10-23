@@ -65,7 +65,7 @@ No architecture in this memo is claimed to achieve even the 60–75 kg target. I
 |---|---|---|
 | Li-ion pack | 150–250 Wh/kg; 250–400 Wh/L (E1) | M1 35 kg fails; M5 near-feasible; M3 conditional |
 | Li-ion cell | 250–300 Wh/kg commercial; 400 lab (E1) | cell gains do not automatically survive packaging |
-| Diesel genset | 25–35% at rated load; ~26% screened overall | M1 ~49 kg, $0.54/kWh fuel; M2 mass-feasible |
+| Diesel genset | 25–35% at rated load; 26.35% screened | M1 **50.3 kg screened / 45.6 kg at 35%**, $0.385/kWh fuel at ₹95.20/L; M2 mass-feasible |
 | PEM + 5 wt% H₂ | 45–55% LHV; tank 12.6 kg for 0.63 kg H₂ | M1 ~56 kg; M2 tank-mass-limited |
 | TPV | 40% cell at 1900–2400 °C (S01) | converter only; store 484–806 kg; M4 |
 | Solar PV | ~25% commercial module (N10); ~30–34% detailed-balance limit (S05; 30% in the 1961 blackbody case) | M2/M4 with storage; not a compact core |
@@ -322,7 +322,7 @@ All 15 required files exist. None is approved. Gate 2 is not passed.
 
 The evidence points away from a better cell and toward a **system** invention. Four statements define the bet:
 
-1. **M1’s mass-feasible source is chemical, not electrochemical.** Diesel at ~49 kg is the lightest screened M1 system; the battery path needs 510–691 Wh/kg pack.
+1. **M1’s mass-feasible source is chemical, not electrochemical.** Diesel at 50.3 kg screened (45.6 kg at 35%) is the lightest screened M1 system; the battery path needs 510–691 Wh/kg pack.
 2. **M1’s cost-feasible system is a cheap, ~35%-efficient genset hybrid at Indian fuel prices.** At ₹95.20/L, $2,000 capex, and 250 missions/year, the total is **$0.369/kWh**; the same system at $5,000 capex is $0.489. Capex and duty cycle decide the target, not fuel.
 3. **The remaining mass gap is the genset, not the radiator.** Packaged source, buffer, and fuel are 29.1 kg; radiator 9.8 kg; converter 11.3 kg; packaging 5.8 kg. At 35% the total is 45.6 kg, so a **10.6 kg cut** is needed. The converter is load-type-dependent: a 5 kVA Victron AC unit is 19 kg, a 100 kW PM100 motor inverter is 7.5 kg. The decisive lever is a **1.5 kW genset at ≤12 kg/kW**.
 4. **The invention is therefore a sealed fuel-cartridge generator with an integrated pulse buffer and a low-mass radiator/enclosure** — not a 600 Wh/kg cell. The cartridge carries energy; the buffer carries the 30 s pulse; the converter and radiator are the mass battleground.

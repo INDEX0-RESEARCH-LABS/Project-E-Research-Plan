@@ -204,7 +204,7 @@ The battery term is the 175 Wh/kg pack basis plus fixed converter/BOP. The diese
 
 - Below ~3.7 kWh, a battery is lighter.
 - Above ~3.7 kWh, a chemical fuel is lighter **at this power scale**.
-- At M1 (10 kWh), diesel is ~49 kg vs battery ~118 kg: the benchmark’s mass problem is not a battery problem, it is a **source** problem. Diesel then still misses 35 kg by ~14 kg and fails on fuel cost ($0.536/kWh), heat (3.5 kW), emissions, and noise.
+- At M1 (10 kWh), diesel is 50.3 kg screened (45.6 kg at 35%) vs battery ~118 kg: the benchmark’s mass problem is not a battery problem, it is a **source** problem. Diesel then still misses 35 kg by ~14 kg and fails on fuel cost ($0.536/kWh), heat (3.5 kW), emissions, and noise.
 - At M2 (360 kWh), diesel is ~165 kg vs battery ~3,770 kg: chemical wins by ~23×.
 - At M5 (4 MWh), a 1 MW engine is 5–10 t, so the linear model no longer applies; stationary batteries win on cost, emissions, and maintenance.
 
