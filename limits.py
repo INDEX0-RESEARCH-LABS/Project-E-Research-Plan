@@ -362,7 +362,8 @@ def report_diesel_sensitivity():
 
 
 def m2_cycle_case(genset_kw=3.0, eta=0.35, battery_usd_kwh=200.0,
-                  battery_kwh=13.333, life_h=10_000.0):
+                  battery_kwh=13.333, life_h=10_000.0,
+                  genset_usd_kw=400.0):
     """M2 with a standard genset run at rated load to charge a daily buffer.
 
     Delivered 12 kWh/day; 0.95 converter, 0.90 battery round-trip; 30-day
@@ -378,10 +379,10 @@ def m2_cycle_case(genset_kw=3.0, eta=0.35, battery_usd_kwh=200.0,
     waste = genset_kw / eta - genset_kw
     area = waste * 1000.0 * 0.35 / (10.0 * 40.0)
     mass += area * 3.0 + genset_kw * 1.5 * 1.25
-    capex = genset_kw * 400.0 + battery_kwh * battery_usd_kwh + genset_kw * 80.0
+    capex = genset_kw * genset_usd_kw + battery_kwh * battery_usd_kwh + genset_kw * 80.0
     capital = capex / 43_800.0
     fuel_cost = fuel_l * 1.0064 / 360.0
-    repl = (hours_year * 10.0 / life_h) * (genset_kw * 400.0) / 43_800.0
+    repl = (hours_year * 10.0 / life_h) * (genset_kw * genset_usd_kw) / 43_800.0
     total = fuel_cost + capital + 0.020 + repl
     return dict(genset_kw=genset_kw, eta=eta, battery_usd_kwh=battery_usd_kwh,
                 fuel_l=fuel_l, hours_year=hours_year, mass_kg=mass,
@@ -404,6 +405,12 @@ def report_m2_cycle():
                       f"{r['capex_usd']:8.0f}   ${r['total_usd_kwh']:.3f}")
     print("  note: 5 kW peak is battery-supported; 13.3 kWh at 90% DoD;")
     print("  3,650 cycles/10 y is at the LFP limit; a battery replacement adds ~$0.06.")
+    print("  genset capex sensitivity (3 kW, $200/kWh battery):")
+    for gusd in (400.0, 700.0, 1000.0):
+        r35 = m2_cycle_case(3.0, 0.35, 200.0, genset_usd_kw=gusd)
+        r40 = m2_cycle_case(3.0, 0.40, 200.0, genset_usd_kw=gusd)
+        print(f"    ${gusd:4.0f}/kW: capex ${r35['capex_usd']:5.0f}; "
+              f"35% ${r35['total_usd_kwh']:.3f}; 40% ${r40['total_usd_kwh']:.3f}")
 
 
 def report_sources():

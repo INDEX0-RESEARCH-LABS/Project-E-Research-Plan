@@ -145,6 +145,20 @@ radiator 10 W/m²K, ΔT 40 K, 3 kg/m²; 1.25 packaging.
 (fuel 121 L vs 109 L at 35%). The net at 35%/$200 is **$0.499** — a marginal
 pass, not a comfortable one. At 40%/$200 it is **$0.457–0.479**, a real pass.
 
+**Genset capex is the second knife-edge.** Market listings put brand-name
+8–20 kW diesel sets at **$775–$1,000/kW**; a generic 3 kW set may be
+$400–$700/kW. The replacement term scales with the same capex, so the table’s
+$400/kW assumption is optimistic:
+
+| Genset $/kW | Capex | LCOE at 35% | LCOE at 40% |
+|---:|---:|---:|---:|
+| 400 | $4,107 | **0.499** | **0.457** |
+| 700 | $5,007 | 0.555 | 0.512 |
+| 1,000 | $5,907 | 0.610 | 0.568 |
+
+At $700–$1,000/kW, **both 35% and 40% fail**. The pass needs a ≤$600/kW set at
+40%, or ≤$400/kW at 35% — a narrow, unquoted corner.
+
 **Caveats:** (1) the battery cycles 3,650 times in 10 years at 90% DoD, at the
 LFP limit; a replacement adds ~$0.06/kWh and fails the 35% case; (2) the 5 kW
 peak is battery-supported, but a 5 kW **continuous** load invalidates the 3 kW
@@ -153,10 +167,11 @@ converter/charger is one 0.95 block; two conversions would cut efficiency and
 raise fuel ~5%.
 
 **Verdict on the alternative:** it does **not** turn M2 into a comfortable
-pass. It is a hedge: if the 0.58 kW engine is expensive ($1,000), the 3 kW
-cycle-charging path at 35%/$200 ($0.499) beats it ($0.541); if the small engine
-is $232–$500, the continuous path is better ($0.387–$0.441). The binding
-variables remain engine efficiency, engine price, and now battery price/life.
+pass. At the optimistic $400/kW and 35%/$200 it reaches $0.499; at realistic
+$700–$1,000/kW it fails even at 40%. The continuous path with a $232–$500
+engine is better ($0.387–$0.441) if such an engine exists. The alternative adds
+two new knife-edges — genset capex and battery life — without removing the
+efficiency one. **Recorded as a hedge, not a preferred architecture.**
 
 ## 6. Verdict
 
@@ -168,9 +183,8 @@ under a narrow condition:**
 
 At the model's $232 replacement it passes at $0.487; at a realistic $500–$1,000
 it fails or is marginal. A cycle-charging alternative (standard 3 kW genset + 13.3 kWh
-buffer) reaches $0.499 at 35% and $200/kWh, but is a hedge rather than a
-robust pass: it needs 40% efficiency for margin and a battery at 3,650
-cycles/10 y. **M2 is the feasibility leader among M1–M5, but it is
+buffer) reaches $0.499 at 35%, $200/kWh, and $400/kW, but fails at realistic
+$700–$1,000/kW genset prices even at 40%; it is a hedge, not a robust pass. **M2 is the feasibility leader among M1–M5, but it is
 conditional, and its binding term is the engine, not the battery.** It is not a
 compact-core mission: 212 kg and 250 L.
 
