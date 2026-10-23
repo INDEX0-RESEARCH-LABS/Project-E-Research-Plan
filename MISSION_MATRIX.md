@@ -60,11 +60,13 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 |---|---:|---:|---:|---:|---|---|
 | M1 | 691 Wh/kg | 510 Wh/kg | 244 Wh/L | 0.16 kW battery; 3.5 kW diesel | 1,667 missions needed; 1/day feasible | **mass + volume + cost** |
 | M2 | 1,127 Wh/kg | 1,112 Wh/kg | 526 Wh/L | ~1.4 kW diesel | $50k = $1.14/kWh capital alone | **source + cost arithmetic** |
-| M3 | 355 Wh/kg | 186 Wh/kg | 97 Wh/L | ~1.1 kW continuous | 2,222 missions needed; 3/day feasible | **converter + heat** |
+| M3 | 355 Wh/kg | 186 Wh/kg | 97 Wh/L | ~1.1 kW continuous | 2,222 missions needed; 3/day feasible | **converter + load type** |
 | M4 | n/a (generator) | n/a | n/a | 30 kW at 25%; 15 kW at 40% | $10k capex; radiator mass not priced | **heat rejection** |
 | M5 | 256 Wh/kg | 242 Wh/kg | 146 Wh/L | ~111 kW at 90% path | charging $0.10 > $0.08 target | **electricity price + cost** |
 
 **Reading the table:** M1 and M2 cannot be closed by known storage. M3 and M5 are close enough that a measured converter or pack could change the verdict. M4 is not a storage problem at all; it is a heat-rejection and heat-source problem.
+
+**M3 measured-converter update (2026-10-23):** a Cascadia PM100 traction inverter is **7.5 kg at 100 kW** (0.25 kg/kW at 30 kW), which leaves 88 kg for the pack and requires only **166 Wh/kg pack** — at the edge of current EV packs. A Deye 30 kW 50 Hz hybrid inverter is **80 kg**, which consumes the 100 kg budget before the pack and requires **≥840 Wh/kg**. M3 therefore passes or fails on **one definition: motor/DC load vs 50 Hz AC load**. See `COMPONENT_EVIDENCE.md`.
 
 ---
 
@@ -296,7 +298,7 @@ The matrix is a screening aid, not a selection. A “✓” means “not exclude
 
 Ranked by **plausibility of a meaningful improvement**, not by ambition alone. “Improvement” means ≥1.5× system specific energy or power, or ≥30% LCOE, at the full boundary.
 
-| Rank | Mission | Plausibility | Potential improvement | Evidence readiness | Why |\n|---:|---|---|---|---|---|\n| **1** | **M3** high-power compact | **High** | High (30 kW in 100 kg) | E1; converter missing | A conventional pack plus a measured converter may already pass; the decisive unknown is cheap |\n| **2** | **M4** stationary heat-to-power | Medium–high | High (efficiency and radiator) | E1; heat source external | Mature ORC/Stirling/SOFC physics; the binding term is engineering (radiator, heat exchanger) |\n| **3** | **M2** long-duration remote | Medium (diesel) / low (nuclear) | **Very high** (source) | E1; no fuel/regulatory data | Largest system-level gap; diesel is mass-feasible but cost/heat-limited; nuclear is regulation-bound |\n| **4** | **M5** bulk stationary | **High** (technology) | Low–medium (cost only) | E1; pack data available | Conventional storage already works; the target is electricity-price-bound, not physics-bound |\n| **5** | **M1** portable pulse | **Low** | High (35 kg) | E1; no 500+ Wh/kg pack | The hardest mass/volume/cost combination; keep as the ambition and the benchmark, not the first bet |\n\nThe ranking is provisional and evidence-driven: a converter datasheet can move M3 up or down; an H₂ price below $4/kg moves M2 up; a 500 Wh/kg pack moves M1 up.
+| Rank | Mission | Plausibility | Potential improvement | Evidence readiness | Why |\n|---:|---|---|---|---|---|\n| **1** | **M3** high-power compact | **High** for motor/DC; **low** for 50 Hz AC | High (30 kW in 100 kg) | E2 converter; pack E1 | PM100 7.5 kg → 166 Wh/kg pack; Deye 80 kg → impossible. One load definition decides |\n| **2** | **M4** stationary heat-to-power | Medium–high | High (efficiency and radiator) | E1; heat source external | Mature ORC/Stirling/SOFC physics; the binding term is engineering (radiator, heat exchanger) |\n| **3** | **M2** long-duration remote | Medium (diesel) / low (nuclear) | **Very high** (source) | E1; no fuel/regulatory data | Largest system-level gap; diesel is mass-feasible but cost/heat-limited; nuclear is regulation-bound |\n| **4** | **M5** bulk stationary | **High** (technology) | Low–medium (cost only) | E1; pack data available | Conventional storage already works; the target is electricity-price-bound, not physics-bound |\n| **5** | **M1** portable pulse | **Low** | High (35 kg) | E1; no 500+ Wh/kg pack | The hardest mass/volume/cost combination; keep as the ambition and the benchmark, not the first bet |\n\nThe ranking is provisional and evidence-driven: a converter datasheet can move M3 up or down; an H₂ price below $4/kg moves M2 up; a 500 Wh/kg pack moves M1 up.
 
 ---
 

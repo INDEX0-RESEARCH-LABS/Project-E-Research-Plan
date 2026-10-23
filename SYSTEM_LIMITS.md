@@ -96,7 +96,9 @@ M3: 0.5kg/kW: 186 / 232              | 1.0kg/kW: 244 / 305  | 1.5kg/kW: 355 / 44
 M5: 0.5kg/kW: 242 / 303              | 1.0kg/kW: 249 / 311  | 1.5kg/kW: 256 / 319
 ```
 
-**Consequence:** the widely quoted “M1 needs ~690 Wh/kg pack” is *conditional* on 1.5 kg/kW. At a measured 0.5 kg/kW converter it is ~510 Wh/kg. Both are above current packs, so the M1 verdict does not flip — but the M3 verdict does: at 0.5 kg/kW, M3 needs 186 Wh/kg pack, which is inside current premium Li-ion. **M3 is the mission where a conventional system is closest to feasible, and its verdict depends on a missing datasheet.**
+**Consequence:** the widely quoted “M1 needs ~690 Wh/kg pack” is *conditional* on 1.5 kg/kW. At a measured 0.5 kg/kW converter it is ~510 Wh/kg. Both are above current packs, so the M1 verdict does not flip — but the M3 verdict does: at 0.5 kg/kW, M3 needs 186 Wh/kg pack, which is inside current premium Li-ion.
+
+**Measured replacements (E2, 2026-10-23):** the Cascadia PM100 is **7.5 kg at 100 kW** — 0.25 kg/kW at M3's 30 kW — which leaves 88 kg for the pack and requires **166 Wh/kg pack**. The Deye SUN-30K is **80 kg at 30 kW** (2.67 kg/kW), which leaves nothing and requires **≥840 Wh/kg**. M3's verdict is therefore **load-type-dependent**, not materials-dependent: a motor/DC load is near-conventional; a 50 Hz AC load is impossible at 100 kg. See `COMPONENT_EVIDENCE.md`.
 
 The band uses the benchmark's **10 kWh** mission: 8 kWh base plus 2 kWh of pulses (`dispatch.py:39–41`). That is internally consistent.
 

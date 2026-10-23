@@ -103,7 +103,7 @@ Budgets are ranges from `RESOURCE_AND_BUDGET_PLAN.md`; they are not commitments.
 
 **Duration:** 6–10 weeks. **Budget:** ₹0–0.5 lakh (T0); external review ₹0.70–1.25 lakh; total T0 ≤₹2.0 lakh.
 
-**Priority inputs:** converter mass (0.5 vs 1.5 kg/kW), pack datasheet, H₂ price, heat-transfer coefficient, nuclear regulatory path.
+**Priority inputs:** M3 load type (motor/DC vs 50 Hz AC), one 10 kWh pack datasheet at ≥166 Wh/kg, H₂ price, heat-transfer coefficient, nuclear regulatory path. Converter mass is now measured: 7.5 kg (PM100) vs 80 kg (Deye 30K).
 
 ---
 
