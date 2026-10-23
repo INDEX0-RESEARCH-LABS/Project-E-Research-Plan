@@ -15,9 +15,9 @@ from engineering.mechanisms import get  # noqa: E402
 
 class DurationTests(unittest.TestCase):
     def test_li_ion_duration_at_three_kw(self) -> None:
-        # 2.16 L, 1.25 packaging, 0.2 L BOP, 700 Wh/L: 0.3565 h = 21.4 min.
+        # 2.16 L, 1.25 packaging, 0.2 L BOP, 0.4 L converter, 700 Wh/L: 0.2632 h.
         hours = rescope.max_duration_h("li_ion", 3.0, 2.16)
-        self.assertAlmostEqual(hours, 0.3565, places=3)
+        self.assertAlmostEqual(hours, 0.2632, places=3)
 
     def test_pem_cannot_start_at_three_kw_in_envelope(self) -> None:
         # Stack + BOP alone exceed 2.16 L at 3 kW before any H2 is added.
@@ -35,30 +35,29 @@ class DurationTests(unittest.TestCase):
 
 class PowerTests(unittest.TestCase):
     def test_li_ion_power_for_one_hour(self) -> None:
-        # 2.16 L, 1.25 packaging, 0.2 L BOP, 700 Wh/L: 1.0696 kWh = 1.07 kW.
+        # 2.16 L, 1.25 packaging, 0.2 L BOP, 0.4 L converter, 700 Wh/L: 0.7896 kW.
         power = rescope.max_power_kw("li_ion", 1.0, 2.16)
-        self.assertAlmostEqual(power, 1.0696, places=3)
+        self.assertAlmostEqual(power, 0.7896, places=3)
 
-    def test_pem_power_for_one_hour_is_small(self) -> None:
-        # 2.16 L leaves 0.228 L after BOP; H2 is 1.25 L/kW and stack 0.333 L/kW.
+    def test_pem_power_for_one_hour_is_zero(self) -> None:
+        # 1.5 L BOP + 0.4 L converter is already 1.9 L; packaging gives 2.375 L.
         power = rescope.max_power_kw("pem_fuel_cell", 1.0, 2.16)
-        self.assertGreater(power, 0.0)
-        self.assertLess(power, 0.20)
+        self.assertEqual(power, 0.0)
 
-    def test_stirling_power_for_one_hour_is_small(self) -> None:
+    def test_stirling_power_for_one_hour_is_zero(self) -> None:
+        # Fixed BOP plus converter exceeds the envelope before the engine is added.
         power = rescope.max_power_kw("stirling", 1.0, 2.16)
-        self.assertGreater(power, 0.0)
-        self.assertLess(power, 0.10)
+        self.assertEqual(power, 0.0)
 
 
 class ThresholdTests(unittest.TestCase):
     def test_cell_density_for_three_kw_one_hour(self) -> None:
         value = rescope.required_cell_wh_l(3.0, 1.0, 2.16, packaging=1.25, bop_l=0.2)
-        self.assertAlmostEqual(value, 1963.35, places=1)
+        self.assertAlmostEqual(value, 2659.6, places=1)
 
     def test_cell_density_with_less_packaging(self) -> None:
         value = rescope.required_cell_wh_l(3.0, 1.0, 2.16, packaging=1.10, bop_l=0.1)
-        self.assertAlmostEqual(value, 1609.8, places=1)
+        self.assertAlmostEqual(value, 2049.7, places=1)
 
     def test_pem_stack_density_is_infeasible_with_h2_tank(self) -> None:
         value = rescope.required_stack_kw_per_l(

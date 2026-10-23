@@ -1,8 +1,10 @@
 {
-  "run_id": "20261023T042646Z",
-  "date": "2026-10-23T04:26:46.103308+00:00",
-  "git_commit": "e4c02fef06bd1987e65c0651fb84b8e3d602add8",
-  "git_commit_note": "commit at run time; generated outputs are committed afterward",
+  "run_id": "20261023T050707Z",
+  "date": "2026-10-23T05:07:07.765758+00:00",
+  "git_commit": "79a4859994a6561b097bbe028a7eb1bccd5e41f3",
+  "git_commit_note": "HEAD at run time; model_dirty is true if engineering/ differs from HEAD; generated outputs are committed afterward",
+  "model_dirty": true,
+  "model_sha256": "e4ea72ffe65c5d1e71a104952b7e3e677ce5e85843faf8663b8063f9a9c7d6a1",
   "python": "3.12.14",
   "platform": "Linux-7.2.5-3-omarchy-x86_64-with-glibc2.44",
   "target": {
@@ -33,18 +35,22 @@
   ],
   "inputs": {
     "engineering/data/requirements.json": "f3aea10eb680ee47098a8d398f6b21049079cb1c83b4656557c32f6a80b5a953",
-    "engineering/mechanisms.py": "80cc961c8bf802c9a4504e2f9f9d75d2d6059250d59b91bec1103a2ed33878fe",
-    "engineering/physics.py": "a6a794f81823c16b4b1ef1e4f458387dc5d66873b6e5172e4aeed4793a09eab0",
-    "engineering/feasibility.py": "ba60e2180a705154eb961dea44eadd0d64804107b410fd6f5e86e0b1c8a6e7a9"
+    "engineering/mechanisms.py": "4d3a5644dd1b342d579793481c47ad06d761ea2f52b0570bdc1632a0bd27208b",
+    "engineering/physics.py": "513d35643b093155f985ae29a90edcea4f198bd869af318172facdd0ab22b873",
+    "engineering/feasibility.py": "0cf77ed74bfe52025f57ace0117ee0ee2288bf5fff705a004c61f61744c58e11",
+    "engineering/rescope.py": "b23d57bca6eed7582eae0b39e5485db19dd644b00b7762ca35193a0bca59cd38",
+    "engineering/report.py": "e3134cab0bff5eef38e3d7a59c790b24f1a279139b9114b64f40bf6ab16bb6ff"
   },
   "outputs": {
-    "reports/E_MICRO_FEASIBILITY.md": "e7a5ce3cef048538183f081151b24c67500be593a8f91ec6653bc0a5fa3b7da0",
-    "reports/figures/e_micro_volume_vs_duration.png": "368e50e8549c385e1f1959984e7645dd64263c4cb24b6e800af7e55d39953a52",
-    "reports/figures/e_micro_heat_rejection.png": "04b04789467a1bc47185607315dbc921692bdd410951652cf7ba2a3951050f41",
-    "reports/figures/e_micro_volume_at_1h.png": "72b72c4f4a680a9fd658c8e7eefc41352f41df35774b82644ddce1ad2b8afc72"
+    "reports/E_MICRO_FEASIBILITY.md": "f78d1d88e938a76491c4c7b64637a165e2caa98c3216ca5f8213942f8edec9bf",
+    "reports/figures/e_micro_volume_vs_duration.png": "9dc425c1416c7329539978802f9bc4d544779716fc188b1a1d61d43f11c9ca2d",
+    "reports/figures/e_micro_heat_rejection.png": "5f1eff00ec5a414d962690a5e8d18aaae6ed80117bb120d2b7dd74323e33d515",
+    "reports/figures/e_micro_volume_at_1h.png": "9903447b060d8e4f5ff83bf51c36c829f9483aad1c1dc80de6bc43941a30ec39"
   },
   "notes": [
     "Best-case volumes are lower bounds; real systems are larger.",
+    "A 0.4 L converter allowance is included in every row; it is an estimate, not a datasheet.",
+    "The fuel-cell branch includes a radiator; the envelope skin is not used as a radiator.",
     "No component quote or measurement is included.",
     "Project-E benchmark remains frozen at e75be96."
   ]

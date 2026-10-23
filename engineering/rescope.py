@@ -70,12 +70,13 @@ def required_cell_wh_l(
     target_l: float,
     packaging: float = 1.25,
     bop_l: float = 0.2,
+    converter_l: float = 0.4,
 ) -> float:
     """Cell-level volumetric energy density needed for a battery to fit.
 
-    Returns ``inf`` if the fixed BOP/packaging leaves no cell volume.
+    Returns ``inf`` if the fixed BOP, converter and packaging leave no cell volume.
     """
-    allowed_cell_l = target_l / packaging - bop_l
+    allowed_cell_l = target_l / packaging - bop_l - converter_l
     if allowed_cell_l <= 0:
         return math.inf
     return power_kw * 1000.0 * hours / allowed_cell_l
@@ -88,15 +89,17 @@ def required_stack_kw_per_l(
     eta: float,
     packaging: float = 1.25,
     bop_l: float = 1.5,
+    converter_l: float = 0.4,
     h2_density_kg_per_l: float = 0.040,
     lhv_h2_kwh_per_kg: float = 33.33,
 ) -> float:
     """Stack power density needed for a PEM + H2 system to fit.
 
-    Returns ``inf`` if the H2 tank plus BOP already consumes the allowed volume.
+    Returns ``inf`` if the H2 tank plus BOP and converter already consume the
+    allowed volume.
     """
     h2_l = (power_kw * hours / (eta * lhv_h2_kwh_per_kg)) / h2_density_kg_per_l
-    allowed_stack_l = target_l / packaging - bop_l - h2_l
+    allowed_stack_l = target_l / packaging - bop_l - converter_l - h2_l
     if allowed_stack_l <= 0:
         return math.inf
     return power_kw / allowed_stack_l
@@ -112,16 +115,18 @@ def required_engine_l_per_kw(
     thickness_m: float = 0.02,
     packaging: float = 1.25,
     bop_l: float = 1.5,
+    converter_l: float = 0.4,
     lhv_kwh_per_l: float = 9.94,
 ) -> float:
     """Engine specific volume needed for a heat engine to fit.
 
-    Returns ``inf`` if fuel + radiator + BOP already consumes the allowed volume.
+    Returns ``inf`` if fuel + radiator + BOP + converter already consumes the
+    allowed volume.
     """
     fuel_l = power_kw * hours / (eta * lhv_kwh_per_l)
     q_w = power_kw * 1000.0 * (1.0 / eta - 1.0)
     radiator_l = q_w / (h_w_m2k * dt_k) * thickness_m * 1000.0
-    allowed_engine_l = target_l / packaging - bop_l - fuel_l - radiator_l
+    allowed_engine_l = target_l / packaging - bop_l - converter_l - fuel_l - radiator_l
     if allowed_engine_l <= 0:
         return math.inf
     return allowed_engine_l / power_kw

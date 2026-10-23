@@ -11,9 +11,13 @@ Provenance of constants
 -----------------------
 ``LHV_DIESEL_KWH_PER_L`` and ``LHV_H2_KWH_PER_KG`` are standard lower heating
 values used by the frozen benchmark (``project_e.models.conversion``).
-``H2_700BAR_KG_PER_L`` is an approximate 700 bar, 15 C system density (E0); it
-is a screening value, not a datasheet. Every mechanism-specific value lives in
-``mechanisms.py`` with its own evidence label.
+``H2_700BAR_KG_PER_L`` is the approximate density of hydrogen **gas** at
+700 bar, 15 C (E0), not the density of a complete storage system. A Type IV
+pressure vessel has an external/internal volume ratio of roughly 1.4-1.7, so
+the gas volume must not be presented as the vessel volume. The ``packaging``
+factor in ``h2_storage_volume_l`` is a separate, blunt enclosure multiplier;
+it is not a Type IV vessel calculation. Every mechanism-specific value lives
+in ``mechanisms.py`` with its own evidence label.
 """
 
 from __future__ import annotations
@@ -135,7 +139,12 @@ def h2_storage_volume_l(
     density_kg_per_l: float = H2_700BAR_KG_PER_L,
     packaging: float = 1.25,
 ) -> float:
-    """H2 volume at the given system density, including tank packaging."""
+    """H2 gas volume at the given gas density, times a blunt packaging factor.
+
+    This is **not** a Type IV vessel calculation. ``density_kg_per_l`` is gas
+    density at the storage pressure; the vessel wall, liner and domes add
+    roughly 1.4-1.7x in external volume and are not modeled here.
+    """
     e = _positive("energy_kwh", energy_kwh)
     eff = _fraction("eta", eta)
     rho = _positive("density_kg_per_l", density_kg_per_l)

@@ -100,15 +100,15 @@ class ScreenTests(unittest.TestCase):
         self.assertIsNotNone(result)
         assert result is not None
         self.assertEqual(result.mechanism_id, "li_ion")
-        self.assertAlmostEqual(result.best_volume_l, 5.6071428571, places=5)
+        self.assertAlmostEqual(result.best_volume_l, 6.1071428571, places=5)
 
     def test_li_air_theoretical_still_exceeds_envelope_at_one_hour(self) -> None:
         result = screen(get("li_air"), 3.0, 1.0, 2.16)
         self.assertGreater(result.best_volume_l, 2.16)
-        self.assertAlmostEqual(result.best_volume_l, 2.75, places=6)
+        self.assertAlmostEqual(result.best_volume_l, 3.25, places=6)
 
     def test_short_battery_buffer_fits(self) -> None:
-        result = screen(get("li_ion"), 3.0, 0.30, 2.16)
+        result = screen(get("li_ion"), 3.0, 0.25, 2.16)
         self.assertLess(result.best_volume_l, 2.16)
         self.assertEqual(result.verdict, "conditional")  # worst case does not fit
 
@@ -117,9 +117,9 @@ class ScreenTests(unittest.TestCase):
         self.assertEqual(result.verdict, "fail")
 
     def test_li_ion_buffer_duration_at_envelope(self) -> None:
-        # 2.16 L, 1.25 packaging, 0.2 L BOP, 700 Wh/L cell, 3 kW.
-        allowed_kwh = (2.16 / 1.25 - 0.2) * 700.0 / physics.W_PER_KW
-        self.assertAlmostEqual(physics.max_duration_h(allowed_kwh, 3.0) * 60.0, 21.4, places=1)
+        # 2.16 L, 1.25 packaging, 0.2 L BOP, 0.4 L converter, 700 Wh/L, 3 kW.
+        allowed_kwh = (2.16 / 1.25 - 0.2 - 0.4) * 700.0 / physics.W_PER_KW
+        self.assertAlmostEqual(physics.max_duration_h(allowed_kwh, 3.0) * 60.0, 15.8, places=1)
 
     def test_volume_grows_with_duration(self) -> None:
         for mechanism_id in ("li_ion", "pem_fuel_cell", "diesel"):

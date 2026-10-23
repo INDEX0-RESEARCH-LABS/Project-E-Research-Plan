@@ -73,9 +73,16 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
     if kind == "battery":
         if case.cell_wh_l is None:
             raise ValueError("battery case requires cell_wh_l")
-        cells_l = energy_kwh * physics.W_PER_KW / case.cell_wh_l
-        components = {"cells": cells_l, "bop": case.bop_l}
-        total = (cells_l + case.bop_l) * case.packaging
+        if not 0.0 < case.dod <= 1.0 or not 0.0 < case.converter_eta <= 1.0:
+            raise ValueError("battery case requires 0 < dod, converter_eta <= 1")
+        stored_kwh = energy_kwh / (case.dod * case.converter_eta)
+        cells_l = stored_kwh * physics.W_PER_KW / case.cell_wh_l
+        components = {
+            "cells": cells_l,
+            "bop": case.bop_l,
+            "converter": case.converter_l,
+        }
+        total = (cells_l + case.bop_l + case.converter_l) * case.packaging
         return total, components
 
     if kind == "heat_engine":
@@ -91,6 +98,7 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
             "fuel": fuel_l,
             "radiator": radiator_l,
             "bop": case.bop_l,
+            "converter": case.converter_l,
         }
         total = sum(components.values()) * case.packaging
         return total, components
@@ -100,7 +108,16 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
             raise ValueError("fuel-cell case requires eta and stack_kw_per_l")
         stack_l = power_kw / case.stack_kw_per_l
         h2_l = physics.h2_storage_volume_l(energy_kwh, case.eta, packaging=1.0)
-        components = {"stack": stack_l, "H2 tank": h2_l, "bop": case.bop_l}
+        q_w = physics.heat_engine_waste_heat_w(power_kw, case.eta)
+        area_m2 = physics.heat_rejection_area_m2(q_w, case.h_w_m2k, case.dt_k)
+        radiator_l = physics.radiator_volume_l(area_m2, case.thickness_m)
+        components = {
+            "stack": stack_l,
+            "H2 tank": h2_l,
+            "radiator": radiator_l,
+            "bop": case.bop_l,
+            "converter": case.converter_l,
+        }
         total = sum(components.values()) * case.packaging
         return total, components
 
@@ -111,7 +128,12 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
             power_kw, case.module_w_m2, case.thickness_m, packaging=1.0
         )
         storage_l = energy_kwh * physics.W_PER_KW / case.cell_wh_l
-        components = {"panel": panel_l, "storage": storage_l, "bop": case.bop_l}
+        components = {
+            "panel": panel_l,
+            "storage": storage_l,
+            "bop": case.bop_l,
+            "converter": case.converter_l,
+        }
         total = sum(components.values()) * case.packaging
         return total, components
 
@@ -125,7 +147,11 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
             shield_factor=case.shield_factor,
             packaging=1.0,
         )
-        components = {"shielded source": body_l, "bop": case.bop_l}
+        components = {
+            "shielded source": body_l,
+            "bop": case.bop_l,
+            "converter": case.converter_l,
+        }
         total = sum(components.values()) * case.packaging
         return total, components
 
@@ -134,7 +160,11 @@ def _volume_l(kind: str, case: Case, power_kw: float, hours: float) -> tuple[flo
             raise ValueError("ambient case requires module_w_m2")
         area_m2 = power_kw * physics.W_PER_KW / case.module_w_m2
         collector_l = area_m2 * case.thickness_m * physics.L_PER_M3
-        components = {"collector": collector_l, "bop": case.bop_l}
+        components = {
+            "collector": collector_l,
+            "bop": case.bop_l,
+            "converter": case.converter_l,
+        }
         total = sum(components.values()) * case.packaging
         return total, components
 

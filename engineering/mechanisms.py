@@ -33,6 +33,9 @@ class Case:
     stack_kw_per_l: float | None = None
     bop_l: float = 1.5
     packaging: float = 1.25
+    converter_l: float = 0.4
+    dod: float = 1.0
+    converter_eta: float = 1.0
     h_w_m2k: float = 1000.0
     dt_k: float = 80.0
     module_w_m2: float | None = None
@@ -68,8 +71,10 @@ MECHANISMS: tuple[Mechanism, ...] = (
         best=Case(cell_wh_l=700.0, packaging=1.25, bop_l=0.2),
         worst=Case(cell_wh_l=400.0, packaging=1.35, bop_l=0.3),
         notes=(
-            "3 kWh at 700 Wh/L cell = 4.29 L of cells; packaging brings it to ~5.6 L. "
-            "The envelope is a better fit for a short buffer than for 1 h of storage."
+            "3 kWh at 700 Wh/L cell = 4.29 L of cells; packaging and a 0.4 L converter "
+            "bring it to ~6.1 L. The envelope is a better fit for a short buffer than "
+            "for 1 h of storage. 700 Wh/L is cell-level; 1.25 packaging is aggressive. "
+            "An 80% DoD / 95% converter case is shown as a sensitivity, not the base."
         ),
     ),
     Mechanism(
@@ -84,7 +89,9 @@ MECHANISMS: tuple[Mechanism, ...] = (
         worst=Case(cell_wh_l=800.0, packaging=1.35, bop_l=0.3),
         notes=(
             "Only the extreme theoretical case approaches 2.16 L for 1 h. "
-            "Cycle life, O2 handling and round-trip efficiency are unresolved."
+            "Cycle life, O2 handling and round-trip efficiency are unresolved. "
+            "If air-breathing, CO2 scrubbing is not counted; if primary, it is not "
+            "a rechargeable storage mechanism."
         ),
     ),
     Mechanism(
@@ -98,8 +105,10 @@ MECHANISMS: tuple[Mechanism, ...] = (
         best=Case(eta=0.35, engine_l_per_kw=10.0, h_w_m2k=1000.0, dt_k=80.0),
         worst=Case(eta=0.25, engine_l_per_kw=20.0, h_w_m2k=100.0, dt_k=30.0),
         notes=(
-            "10 L/kW is an optimistic 3 kW genset package; off-the-shelf units are "
-            "larger. Fuel scales linearly with duration and dominates at long intervals."
+            "10 L/kW is a stripped bare-engine figure, not a current 3 kW commercial "
+            "package; off-the-shelf units are 50-150 L/kW. It is retained because it "
+            "favours the mechanism. Fuel scales linearly with duration and dominates "
+            "at long intervals."
         ),
     ),
     Mechanism(
@@ -138,10 +147,21 @@ MECHANISMS: tuple[Mechanism, ...] = (
         maturity="current",
         kind="fuel_cell",
         best=Case(eta=0.60, stack_kw_per_l=3.0, bop_l=1.5, packaging=1.25),
-        worst=Case(eta=0.50, stack_kw_per_l=1.0, bop_l=2.0, packaging=1.35),
+        worst=Case(
+            eta=0.50,
+            stack_kw_per_l=1.0,
+            bop_l=2.0,
+            packaging=1.35,
+            h_w_m2k=100.0,
+            dt_k=30.0,
+        ),
         notes=(
-            "H2 at 0.040 kg/L and 60% LHV is optimistic for a small system. "
-            "The tank, humidifier, air blower, cooling and controls are in BOP."
+            "3 kW/L is an automotive large-stack extrapolation; at 3 kW, end plates "
+            "and manifolds dominate and 0.3-1.5 kW/L is closer to reality. The 1 kW/L "
+            "worst case is the realistic lower bound. H2 at 0.040 kg/L is gas density, "
+            "not vessel density; a Type IV vessel is ~1.4-1.7x larger. The tank, "
+            "humidifier, air blower, coolant loop, radiator and controls are in BOP "
+            "or added explicitly; the 0.4 L converter is separate."
         ),
     ),
     Mechanism(
@@ -161,8 +181,8 @@ MECHANISMS: tuple[Mechanism, ...] = (
         name="Thermoelectric generator",
         category="conversion",
         source="fuel/combustion heat",
-        evidence="E1*: ZT~1; 5-8% system is a literature-class estimate",
-        maturity="current",
+        evidence="E1*: ZT~1; 3-5% is current, 8% is laboratory-class",
+        maturity="advanced",
         kind="heat_engine",
         best=Case(eta=0.08, engine_l_per_kw=5.0, h_w_m2k=1000.0, dt_k=80.0),
         worst=Case(eta=0.05, engine_l_per_kw=15.0, h_w_m2k=100.0, dt_k=30.0),
@@ -179,8 +199,10 @@ MECHANISMS: tuple[Mechanism, ...] = (
         best=Case(module_w_m2=250.0, thickness_m=0.02, cell_wh_l=700.0, packaging=1.25),
         worst=Case(module_w_m2=200.0, thickness_m=0.04, cell_wh_l=400.0, packaging=1.35),
         notes=(
-            "The screen assumes enough storage for the full duration, which is "
-            "conservative. Even the panel alone is many square metres at 3 kW."
+            "The screen assumes enough storage for the mission duration only; that is "
+            "optimistic for a solar system, because night-time storage would multiply "
+            "the storage term by ~5 for diurnal duty. Even the panel alone is many "
+            "square metres at 3 kW."
         ),
     ),
     Mechanism(

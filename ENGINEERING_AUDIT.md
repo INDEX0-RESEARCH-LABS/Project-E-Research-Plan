@@ -29,11 +29,11 @@ The benchmark is a credible **negative result and Track A reference**, not the d
 
 | Item | State |
 |---|---|
-| Commit | `e4c02fe` (`main`), clean working tree; this work is on `engineering-v0` |
+| Audit snapshot | `e4c02fe` (`main`), clean working tree at audit time; the work moved to `engineering-v0` for Gate 2 and re-scope. Use `git log --oneline` for current HEAD. |
 | Documents | 25 Markdown files, including M1–M5 closures, mission matrix, mechanism register, negative results, source ledger, safety register, independent-review plan |
-| Quantitative scripts | `screening.py`, `limits.py`; both exit 0; self-checks pass |
-| Registers | 38 negative results (N-01–N-38); 19 sources (S01–S19); 20 mechanisms (M01–M20) |
-| Gaps | No packaged model, no automated tests for the scripts, no machine-readable requirements/mechanisms/components, no CAD, no multiphysics, no compatibility engine, no run manifest |
+| Quantitative scripts | `screening.py`, `limits.py`; both exit 0; self-checks pass. Gate 2 adds the `engineering/` package, `reports/`, and stdlib tests. |
+| Registers | 38 negative results at audit snapshot (N-01–N-38); N-39–N-41 and C-07 added by Gate 2/re-scope; 19 sources (S01–S19); 20 mechanisms (M01–M20) |
+| Gaps | No CAD, no multiphysics, no compatibility engine, no independent reviewer, no hardware/lab access. The machine-readable requirements/mechanisms and run manifest now exist; component quotes remain absent. |
 
 ### 1.3 Toolchain available
 
@@ -188,12 +188,19 @@ These are cheap, decisive, and falsifiable. They come before CAD, BOM, or contro
 - `engineering/mechanisms.py`
 - `engineering/feasibility.py`
 - `engineering/report.py`
+- `engineering/rescope.py`
+- `engineering/rescope_report.py`
 - `engineering/data/requirements.json`
 - `engineering/tests/test_feasibility.py`
+- `engineering/tests/test_rescope.py`
 - `reports/E_MICRO_FEASIBILITY.md` (generated)
+- `reports/E_MICRO_RESCOPE.md` (generated)
 - `reports/figures/e_micro_volume_vs_duration.png` (generated)
 - `reports/figures/e_micro_heat_rejection.png` (generated)
+- `reports/figures/e_micro_volume_at_1h.png` (generated)
 - `reports/e_micro_run.json` (generated manifest)
+- `reports/e_micro_rescope_run.json` (generated manifest)
+- `LIQUID_FUEL_CELL_EVIDENCE.md` (evidence review, version 0.2)
 
 **Modified**
 
@@ -213,7 +220,7 @@ The milestone is complete only when all of the following are true:
 2. `engineering/report.py` generates `reports/E_MICRO_FEASIBILITY.md` with a run manifest, or fails loudly with a preserved log.
 3. The report states, with numbers and assumptions:
    - the E-Micro volumetric power-density target;
-   - the required heat-rejection area versus the envelope surface;
+   - the required **air-side** heat-rejection area and fin-stack volume versus the envelope surface, without treating the envelope skin as the radiator;
    - the best-case volume of each mechanism at 1, 8, 100, 1,000, and 10,000 h;
    - whether any **current commercial** mechanism fits 2.16 L at 1 h;
    - the minimum relaxation that would make a current mechanism fit;
@@ -221,7 +228,9 @@ The milestone is complete only when all of the following are true:
 4. Every mechanism parameter is labelled **current**, **advanced**, or **theoretical**, with a source or a note that it is an estimate. No parameter is presented as measured when it is not.
 5. The result is a verdict of **pass**, **conditional**, **fail**, or **insufficient evidence** for E-Micro as stated. A fail is a valid deliverable.
 6. `project-e` remains clean at `e75be96`.
-7. The work is committed with a descriptive message and a run manifest that records the commit, inputs, and output hashes.
+7. The work is committed with a descriptive message and a run manifest that records the commit, inputs, output hashes, `model_dirty`, and `model_sha256` (so a report generated from an uncommitted model is detectable).
+
+**Revision 0.2 status (2026-10-23):** criteria 1–7 are met for the Gate 2 and re-scope deliverables: 30 stdlib tests pass, both reports and manifests are generated, and the manifests record the model tree state. Criterion 3 was sharpened after adversarial review because the original cold-plate coefficient applied to the envelope skin was not physical; the corrected air-side bound is larger, not smaller. The Gate 2 verdict remains **FAIL** and the programme remains pre-selection.
 
 ---
 
