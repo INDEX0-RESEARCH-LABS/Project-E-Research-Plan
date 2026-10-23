@@ -1,0 +1,28 @@
+{
+  "run_id": "20261023T043829Z",
+  "date": "2026-10-23T04:38:29.785214+00:00",
+  "git_commit": "b32e3508ea3ca4ddd7564f99f46002da054ac4ea",
+  "git_commit_note": "commit at run time; generated outputs are committed afterward",
+  "target": {
+    "product": "E-MICRO",
+    "power_kw": 3.0,
+    "volume_l": 2.16,
+    "hours": 1.0
+  },
+  "inputs": {
+    "engineering/data/requirements.json": "f3aea10eb680ee47098a8d398f6b21049079cb1c83b4656557c32f6a80b5a953",
+    "engineering/mechanisms.py": "80cc961c8bf802c9a4504e2f9f9d75d2d6059250d59b91bec1103a2ed33878fe",
+    "engineering/physics.py": "a6a794f81823c16b4b1ef1e4f458387dc5d66873b6e5172e4aeed4793a09eab0",
+    "engineering/feasibility.py": "ba60e2180a705154eb961dea44eadd0d64804107b410fd6f5e86e0b1c8a6e7a9",
+    "engineering/rescope.py": "8227198db0e937af2b9540862a86d7759419e08a2039b786055fc53c8e3fccea"
+  },
+  "outputs": {
+    "reports/E_MICRO_RESCOPE.md": "6f4d94d7b54053bef4cbffeee2b8b73667dc35e7336fe47801a8ce9141c0c1ad"
+  },
+  "notes": [
+    "Inverse limits use monotonic bisection on the forward volume screen.",
+    "A zero duration means fixed subsystem volume already exceeds the envelope.",
+    "Inverse limits are volume-only; cell C-rate, cycle life, BMS and inverter limits are not modeled.",
+    "No component quote or measurement is included."
+  ]
+}
