@@ -59,12 +59,12 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 | Mission | Required pack (1.5 kg/kW) | Required pack (0.5 kg/kW) | Nameplate / envelope | Waste heat | Capex check | Binding constraint |
 |---|---:|---:|---:|---:|---|---|
 | M1 | 691 Wh/kg | 510 Wh/kg | 244 Wh/L | 0.16 kW battery; 3.5 kW diesel | 1,667 missions needed; 1/day feasible | **mass + volume + cost** |
-| M2 | 1,127 Wh/kg | 1,112 Wh/kg | 526 Wh/L | ~1.4 kW diesel | $50k = $1.14/kWh capital alone | **source + cost arithmetic** |
+| M2 | 1,127 Wh/kg (battery) | 1,112 Wh/kg (battery) | 250 L (diesel) | ~1.5 kW diesel | diesel $722 capex, **$0.441/kWh** at 26.35%; $0.487 with a 10,000 h engine | **engine life + fuel logistics** |
 | M3 | 355 Wh/kg | 186 Wh/kg | 97 Wh/L | ~1.1 kW continuous | 2,222 missions needed; 3/day feasible | **converter + load type** |
 | M4 | n/a (generator) | n/a | n/a | 30 kW at 25%; 15 kW at 40% | $10k capex; radiator mass not priced | **heat rejection** |
 | M5 | 256 Wh/kg | 242 Wh/kg | 146 Wh/L | ~111 kW at 90% path | charging $0.10 > $0.08 target | **electricity price + cost** |
 
-**Reading the table:** M1 and M2 cannot be closed by known storage. M3 and M5 are close enough that a measured converter or pack could change the verdict. M4 is not a storage problem at all; it is a heat-rejection and heat-source problem.
+**Reading the table:** M1 cannot be closed by known storage or a realistic genset. M2 cannot be closed by storage but **can** by diesel (212 kg, $0.441/kWh at 26.35%), making it the feasibility leader. M3 is conditional on a 166 Wh/kg pack and a DC/motor load. M5 is electricity-price-bound. M4 is a heat-rejection and heat-source problem.
 
 **M3 measured-converter update (2026-10-23):** a Cascadia PM100 traction inverter is **7.5 kg at 100 kW** (0.25 kg/kW at 30 kW), which leaves 88 kg for the pack and requires only **166 Wh/kg pack** — at the edge of current EV packs. A Deye 30 kW 50 Hz hybrid inverter is **80 kg**, which consumes the 100 kg budget before the pack and requires **≥840 Wh/kg**. M3 therefore passes or fails on **one definition: motor/DC load vs 50 Hz AC load**. At zero mass margin; a 10 kg (10%) reserve raises the requirement to **187 Wh/kg**. See `M3_CLOSURE.md` and `COMPONENT_EVIDENCE.md`.
 
