@@ -30,15 +30,15 @@
 | M1 at 35 kg needs **510–691 Wh/kg pack** (638–864 cell) depending on converter mass | `limits.py`; 1.5 vs 0.5 kg/kW; 10 kWh basis | High (conditional on assumptions) |
 | No demonstrated pack is at 500–700 Wh/kg | Best credible 150–250 Wh/kg pack (E1; no datasheet) | Medium-high |
 | M1’s 690 Wh/kg headline is **conditional**, not a physical law | Converter 1.5 kg/kW is an assumption | High |
-| M2 is source-bound: battery needs 1,112–1,127 Wh/kg pack; diesel is ~165 kg | `limits.py`; diesel 3.6 kWh/kg fuel at 30% | High (screening) |
-| M2’s $50k capex / $0.50 per kWh targets are mutually inconsistent | $50k over 122 missions × 360 kWh = $1.14/kWh capital | High (arithmetic) |
+| M2’s **battery** route needs 1,112–1,127 Wh/kg pack; the **diesel** route is 212 kg and $0.441/kWh at 26.35% | `limits.py`; `MISSION_MATRIX.md` §4.1 | High (reconstruction) |
+| M2’s “$50k capex / $0.50 incompatible” finding was **wrong**: $50k is a ceiling, not a spend. A $722 diesel system passes; the binding term is **engine life** | `MISSION_MATRIX.md` §4.1; 8,760 h/y; replacement cost | High (arithmetic; engine life E1) |
 | M3 is the closest to conventional feasibility, **if the load is a motor/DC load** | PM100 7.5 kg at 100 kW → **166 Wh/kg pack at zero margin, 187 with 10 kg reserve**; a 30 kW 50 Hz inverter is 80 kg → ≥840 Wh/kg, impossible | High for mass; pack E1 |
 | M4 is heat-bound, not storage-bound | 30 kW waste at 25% → 30 m², ~150 kg radiator | High (conservation + heat transfer) |
 | B3 TPV is a converter, not a source; store is 484–806 kg | External ≥1500 °C heat; 0.06–0.10 kWh/kg usable | High (screening) |
 | C1 PEM is ~56 kg and fails H5 at $6/kg H₂ | Fuel alone $0.36/kWh; capex needs 12,500 missions | High |
-| C2 diesel is **50.3 kg screened** at 26.35%, **45.6 kg at 35%**; fuel is $0.385/kWh at the verified Delhi RSP of ₹95.20/L ($1.006/L) | PPAC 2026-10-21; `limits.py` §8, §10; `M1_CLOSURE.md` | High (price verified; mass from model) |
+| C2 diesel is **50.3 kg screened** at 26.35%, **45.6 kg at 35%**; delivered fuel is **$0.405/kWh at 26.35%** ($0.305 at 35%) at the verified Delhi RSP of ₹95.20/L ($1.006/L) | PPAC 2026-10-21; `limits.py` §8, §10; `M1_CLOSURE.md` | High (price verified; mass from model) |
 | **M1’s 35 kg is not closed.** Best case is 35.0 kg only with a ≤12 kg/kW genset, forced convection, 1.10 packaging, and a 1 kg tank — zero margin. At 15–20 kg/kW it is 38.8–46.8 kg. | `M1_CLOSURE.md`; `limits.py` §10 | High (arithmetic; genset kg/kW is E1) |
-| **M1 cost is reachable; M1 mass is not.** At 35% efficiency, 45.6 kg, $2,000 capex, 250 missions/y, the diesel hybrid is **$0.369/kWh**; at $5,000 capex it is $0.489. The 35 kg route needs a PM100-class converter and forced cooling, which pushes capex toward $5,000 and cost toward **$0.489** — so **the 35 kg and $0.40/kWh targets are not simultaneously reachable** with a conventional genset. | `limits.py` §8; verified diesel price | High (arithmetic; BOP mass E1) |
+| **M1 cost is reachable; M1 mass is not.** At 35% generator efficiency, 45.6 kg, $2,000 capex, 250 missions/y, the diesel hybrid is **$0.385/kWh** (capex ceiling $2,387); at $5,000 capex it is **$0.505**. At the screened 26.35%, fuel alone is **$0.405 — above target before capital**. The 35 kg route needs a PM100-class converter and forced cooling, pushing capex toward $5,000 and cost toward **$0.505** — so **the 35 kg and $0.40/kWh targets are not simultaneously reachable** with a conventional genset. | `limits.py` §8; verified diesel price | High (arithmetic; BOP mass E1) |
 | Nuclear is mass-plausible for M2 but regulation-bound | 100–1,000 kg/kWe concept range; no lawful path yet | Medium-low |
 | The full Arc-Reactoresque vision is not supported by known physics | Source hierarchy: only nuclear/chemical exceed 1 kWh/kg system | High |
 
@@ -65,7 +65,7 @@ No architecture in this memo is claimed to achieve even the 60–75 kg target. I
 |---|---|---|
 | Li-ion pack | 150–250 Wh/kg; 250–400 Wh/L (E1) | M1 35 kg fails; M5 near-feasible; M3 conditional |
 | Li-ion cell | 250–300 Wh/kg commercial; 400 lab (E1) | cell gains do not automatically survive packaging |
-| Diesel genset | 25–35% at rated load; 26.35% screened | M1 **50.3 kg screened / 45.6 kg at 35%**, $0.385/kWh fuel at ₹95.20/L; M2 mass-feasible |
+| Diesel genset | 25–35% at rated load; 26.35% screened | M1 **50.3 kg screened / 45.6 kg at 35%**, $0.405/kWh delivered fuel at 26.35% (₹95.20/L); M2 mass-feasible |
 | PEM + 5 wt% H₂ | 45–55% LHV; tank 12.6 kg for 0.63 kg H₂ | M1 ~56 kg; M2 tank-mass-limited |
 | TPV | 40% cell at 1900–2400 °C (S01) | converter only; store 484–806 kg; M4 |
 | Solar PV | ~25% commercial module (N10); ~30–34% detailed-balance limit (S05; 30% in the 1961 blackbody case) | M2/M4 with storage; not a compact core |
@@ -126,7 +126,9 @@ No candidate is above E1. No system-level result exists.
 
 ### Q7. What is the single most decisive next experiment or analysis?
 
-**Fix M3's load definition, then close one 10 kWh pack datasheet at its boundary.**
+**Fix M3's load definition, then close one 10 kWh pack datasheet at its boundary — and decide whether M3 or M2 is the real first target.**
+
+**Counter-evidence (2026-10-23):** M2's diesel route is **212 kg and $0.441/kWh** at 26.35%, passing all four numeric targets before engine replacement; with a 10,000 h engine it is $0.487. On **feasibility**, M2 now outranks M3. On **compactness**, M3 (100 kg) still leads. The next decision is the axis, not the component.
 
 The converter question is now measured, not guessed: a Cascadia PM100 is **7.5 kg at 100 kW** (166 Wh/kg pack required) and a Deye 30 kW 50 Hz inverter is **80 kg** (≥840 Wh/kg, impossible at 100 kg). So the decisive unknown is no longer kg/kW; it is **what the 30 kW load is**.
 
@@ -208,7 +210,7 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 still pending.
 6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
 7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package. **Pending.**
-8. **M3 is the provisional first Gate 3 target, conditional on a DC/motor load.** M1 is not a Gate 3 target at 35 kg: `M1_CLOSURE.md` shows 45.6 kg at 35% and 38.8–46.8 kg at realistic genset mass.
+8. **M3 is the provisional compactness target** (conditional on a DC/motor load); **M2 is the feasibility target** (212 kg, $0.441/kWh with diesel, engine-life-bound). M1 is not a Gate 3 target at 35 kg. Do not start both; choose the axis first.
 9. Project-E is frozen at `e75be96`. Commits and pushes to **this plan** are authorised. No purchase, no experiment, no hardware spend.
 
 ---
@@ -229,6 +231,8 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 | 10 | H8 LENR | Unknown | Negative control | E1 | ₹0 | no reproducible claim |
 
 **No candidate is selected.** Rank 1 is a decision-analysis task, not a technology winner.
+
+**Axis note (2026-10-23):** on **feasibility**, M2 is now first: a diesel C2 at 26.35% is 212 kg and **$0.441/kWh**, passing all four numeric targets before engine replacement; with a 10,000 h engine it is $0.487. On **compactness**, M3 is first: 100 kg at 166 Wh/kg and zero margin. The project has not chosen which axis it is optimising. See `MISSION_MATRIX.md` §4.1.
 
 ---
 
@@ -323,7 +327,7 @@ All 15 required files exist. None is approved. Gate 2 is not passed.
 The evidence points away from a better cell and toward a **system** invention. Four statements define the bet:
 
 1. **M1’s mass-feasible source is chemical, not electrochemical.** Diesel at 50.3 kg screened (45.6 kg at 35%) is the lightest screened M1 system; the battery path needs 510–691 Wh/kg pack.
-2. **M1’s cost-feasible system is a cheap, ~35%-efficient genset hybrid at Indian fuel prices.** At ₹95.20/L, $2,000 capex, and 250 missions/year, the total is **$0.369/kWh**; the same system at $5,000 capex is $0.489. Capex and duty cycle decide the target, not fuel.
+2. **M1’s cost-feasible system is a cheap, ≥35%-efficient genset hybrid at Indian fuel prices.** At ₹95.20/L, $2,000 capex, and 250 missions/year, the total is **$0.385/kWh** (capex ceiling $2,387); the same system at $5,000 capex is **$0.505**. At 26.35%, fuel alone is $0.405, so efficiency and capex decide the target, not fuel price.
 3. **The remaining mass gap is the genset, not the radiator.** Packaged source, buffer, and fuel are 29.1 kg; radiator 9.8 kg; converter 11.3 kg; packaging 5.8 kg. At 35% the total is 45.6 kg, so a **10.6 kg cut** is needed. The converter is load-type-dependent: a 5 kVA Victron AC unit is 19 kg, a 100 kW PM100 motor inverter is 7.5 kg. The decisive lever is a **1.5 kW genset at ≤12 kg/kW**.
 4. **The invention is therefore a sealed fuel-cartridge generator with an integrated pulse buffer and a low-mass radiator/enclosure** — not a 600 Wh/kg cell. The cartridge carries energy; the buffer carries the 30 s pulse; the converter and radiator are the mass battleground.
 

@@ -107,6 +107,11 @@ def fuel_cost_per_kwh(price_per_unit, kwh_per_unit, efficiency):
     return price_per_unit / (kwh_per_unit * efficiency)
 
 
+def delivered_fuel_cost(price_per_unit, kwh_per_unit, generator_efficiency):
+    """Fuel cost per delivered kWh: includes the 0.95 converter boundary."""
+    return price_per_unit / (kwh_per_unit * generator_efficiency * ETA_CONV)
+
+
 def missions_for_target(m: Mission, fuel_usd_per_kwh: float) -> float:
     """Missions needed to amortise capex inside the LCOE target."""
     margin = m.lcoe_usd_per_kwh - fuel_usd_per_kwh
@@ -130,6 +135,7 @@ def hdr(title):
 def self_check():
     assert abs(converter_mass(MISSIONS[0]) - 11.25) < 1e-9
     assert abs(fuel_cost_per_kwh(DIESEL_USD_PER_L_VERIFIED, DIESEL_KWH_PER_L, 0.263) - 0.385) < 0.001
+    assert abs(delivered_fuel_cost(DIESEL_USD_PER_L_VERIFIED, DIESEL_KWH_PER_L, 0.263) - 0.405) < 0.002
     cells, cell, pack, _ = storage_bound(MISSIONS[0])
     assert 860 < cell < 868, cell
     assert 688 < pack < 694, pack
@@ -292,17 +298,17 @@ def report_diesel_sensitivity():
     price = DIESEL_USD_PER_L_VERIFIED
     print(f"  verified Delhi RSP: Rs 95.20/L / 94.593871 = ${price:.4f}/L")
     for eta in (0.263, 0.30, 0.35, 0.40):
-        print(f"  eta {eta:.1%}: fuel ${fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, eta):.3f}/kWh")
+        print(f"  eta {eta:.1%}: delivered fuel ${delivered_fuel_cost(price, DIESEL_KWH_PER_L, eta):.3f}/kWh")
     print("  total $/kWh = fuel + capex/(missions_per_year * 10 kWh * 10 y)")
     for missions in (250, 500, 750):
         for capex in (2000, 3000, 5000):
             cap = capex / (missions * 10.0 * 10.0)
-            fuel = fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, 0.35)
+            fuel = delivered_fuel_cost(price, DIESEL_KWH_PER_L, 0.35)
             print(f"    {missions:4d}/y  ${capex:5d}  capital ${cap:.3f}  "
                   f"+ fuel(35%) ${fuel:.3f} = ${cap + fuel:.3f}")
     print("  max capex for $0.40 at 250 missions/y:")
     for eta in (0.263, 0.30, 0.35, 0.40):
-        fuel = fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, eta)
+        fuel = delivered_fuel_cost(price, DIESEL_KWH_PER_L, eta)
         print(f"    eta {eta:.1%}: ${max(0.0, (0.40 - fuel)) * 250 * 10 * 10:,.0f}")
 
 

@@ -74,14 +74,38 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 
 These are arithmetic checks on the mission definitions, not technology claims.
 
-1. **M2’s capex and LCOE targets are mutually inconsistent.** At 30-day missions over 10 years there are at most 122 missions. $50,000 capital over 122 × 360 kWh = 43,920 kWh is **$1.14/kWh** before fuel. To meet $0.50/kWh with zero fuel, capex must be ≤ **$21,960**. A nuclear unit will not be; a diesel genset might be, but its fuel is $0.536/kWh at $1.40/L. **M2 needs a revised target:** either capex ≤$25,000, life ≥20 years, or LCOE ≥$1.20/kWh.
+1. **M2’s capex/LCOE finding is corrected in §4.1.** The earlier “$50k/$0.50 inconsistent” assumed the full $50k was spent. It is a **ceiling**, not a required spend: a $722 diesel system is 212 kg and **$0.441/kWh** at 26.35%, passing all four numeric targets before engine replacement. The binding term is **engine life**, not capex.
 2. **M5’s LCOE target is below its charging cost.** At $0.10/kWh grid charging, the target $0.08/kWh is already exceeded before capital. At $0.05/kWh charging plus $0.03/kWh capital, the result is ~$0.086/kWh. M5 is electricity-price-bound; no storage breakthrough fixes it.
 3. **M1’s cost target is duty-cycle-bound.** At one mission/day, capital is $0.137/kWh and fuel $0.10 → $0.237/kWh, under target. At one mission/week, capital alone is $0.96/kWh. The mission must declare a duty cycle; “10 years” alone is not enough.
 4. **M4’s “$1/W” excludes the heat source but not the radiator.** At 25% efficiency the radiator is ~30 m² and ~150 kg; at 40%, ~15 m² and ~75 kg. A $10,000 converter budget with an unpriced 150 kg radiator is not a system cost.
 
 These findings are **proposed corrections for owner review**. They do not change any physics result and do not select an architecture.
 
+### 4.1 M2 correction (2026-10-23): a capex ceiling is not a spend
+
+The earlier finding treated the **$50,000 capex cap** as if it were the system’s cost. A diesel C2 does not spend it.
+
+Reconstruction from the repo’s C2 formulas (360 kWh, 720 h, 5 kW peak, 0.58 kW genset, 0.3 kWh buffer):
+
+| Case | Fuel | Mass | Capex | Capital | Fuel | O&M | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 26.35% gen. | 144.7 L | **212 kg** | **$722** | $0.016 | $0.405 | $0.020 | **$0.441/kWh** |
+| 35% gen. | 108.9 L | 164 kg | $722 | $0.016 | $0.305 | $0.020 | **$0.341/kWh** |
+
+Both pass 500 kg, 1,000 L, $50,000, and $0.50/kWh. The diesel route is **not** source-bound; the battery route is (1,112 Wh/kg pack).
+
+**The binding term is engine life.** 720 h/mission × 12.2 missions/year = 8,760 h/year; over 10 years, 87,600 h. At a 10,000 h engine life, ~8.8 replacements × $232 (the genset share of capex) = $2,032, or **+$0.046/kWh**:
+
+| Engine life | Replacement $/kWh | 26.35% total | 35% total |
+|---|---:|---:|---:|
+| 10,000 h | $0.046 | **$0.487 (passes)** | $0.387 (passes) |
+| 5,000 h | $0.093 | $0.534 (fails) | **$0.434 (passes)** |
+
+**Verdict:** M2 is **engine-life- and efficiency-bound**, not capex-inconsistent. It is the only mission that closes all four numeric targets with conventional technology, subject to fuel logistics (145 L per 30 days), emissions/noise, cold start at −20 °C, and engine life. This is a **feasibility** result, not a deployability claim.
+
 ---
+
+
 
 ## 5. Core metrics
 

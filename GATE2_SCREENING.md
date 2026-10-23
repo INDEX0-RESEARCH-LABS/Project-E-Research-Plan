@@ -92,7 +92,7 @@ supercap buffer 0.05 kWh                 8.3  8.3 kg at 6 Wh/kg; fails H7 <=5 kg
 | A1 with 300 Wh/kg | 74.8 kg | Fail | cells 48.7 kg | H1's ≥250 Wh/kg pack milestone is a component gate, not an M1 pass; M1 needs 510–691 Wh/kg pack |
 | A1 with 500 Wh/kg | 50.4 kg | Fail | cells 29.2 kg | still above 35 kg before margin |
 | A1 with 870 Wh/kg (cell-level; ~696 pack) | 34.9 kg | Barely | no demonstrated pack at this level | **Not a candidate; a sensitivity** |
-| C2 diesel hybrid | **50.3 kg screened** | Fail | genset + converter + fuel | Mass fails. Cost: $0.385/kWh at 26.35%, or **$0.369** at 35% with $2,000 capex and 250 missions/y — **cost passes, mass does not** |
+| C2 diesel hybrid | **50.3 kg screened** | Fail | genset + converter + fuel | Mass fails. Cost: **$0.405/kWh at 26.35%** (above target before capital), or **$0.385** at 35% with $2,000 capex and 250 missions/y (capex ceiling $2,387) — **cost passes only in the 35% case; mass does not** |
 | C1 PEM + 5 wt% H2 | 56.0 kg | Fail | tank + stack + converter | **Fails H5 at $6/kg H2** (> $4/kg); park unless H2 price falls |
 | Supercapacitor 0.05 kWh buffer | 8.3 kg | Buffer only; not a full M1 candidate | 6 Wh/kg | **Fails H7** (>5 kg); A2 buffer is not viable as stated |
 
@@ -100,7 +100,7 @@ The supercapacitor row is buffer-only: its charging source is the parent system,
 
 ### Diesel fuel target
 
-At the verified Delhi RSP of ₹95.20/L (PPAC, 2026-10-21; $1.006/L), C2's 4.02 L costs ~$4.05, or **$0.385/kWh at 26.35%**. At 35%, fuel is **$0.289/kWh**; with $2,000 capex and 250 missions/y the total is **$0.369/kWh (passes)**, and at $5,000 it is **$0.489 (fails)**. The target is **capex- and efficiency-bound, not fuel-bound**. The repo's $1.40/L was 39% high. Mass still fails: see `M1_CLOSURE.md`.
+At the verified Delhi RSP of ₹95.20/L (PPAC, 2026-10-21; $1.006/L), C2's 4.02 L costs ~$4.05, or **$0.405/kWh at 26.35%** — above the $0.40 target before capital. At 35%, delivered fuel is **$0.305/kWh**; with $2,000 capex and 250 missions/y the total is **$0.385/kWh (passes; capex ceiling $2,387)**, and at $5,000 it is **$0.505 (fails)**. The target is **efficiency- and capex-bound, not fuel-price-bound**. The repo's $1.40/L was 39% high. Mass still fails: see `M1_CLOSURE.md`.
 
 ---
 

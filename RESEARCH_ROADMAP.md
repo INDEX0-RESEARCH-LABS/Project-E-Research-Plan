@@ -273,7 +273,7 @@ A stop is a result, not a failure. The negative record is preserved.
 5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 pending.
 6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
 7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package for desk review. **Pending.**
-8. **M3 is the provisional first Gate 3 target, conditional on a DC/motor load.** M1 is not a Gate 3 target at 35 kg (`M1_CLOSURE.md`). Do not start both.
+8. **M3 is the provisional compactness target** (conditional on a DC/motor load); **M2 is the feasibility target** (212 kg, $0.441/kWh with diesel, engine-life-bound). M1 is not a Gate 3 target at 35 kg (`M1_CLOSURE.md`). Do not start both; choose the axis first.
 9. **Project-E frozen at `e75be96`; commits and pushes to this plan are authorised.** No purchase, no experiment, no hardware spend.
 
 ---
