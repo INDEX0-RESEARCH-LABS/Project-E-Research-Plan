@@ -11,7 +11,7 @@
 
 M1: **10 kWh delivered / 8 h**, 1.25 kW average, 6 kW / 30 s pulse every 600 s, **≤35 kg**, ≤60 L, ≤$5,000, ≤$0.40/kWh, 10 years.
 
-Running the repo model for this mission gives **C2 (diesel + buffer) = 50.3 kg**, efficiency **26.35%**, fuel **4.02 L/mission**. The exact breakdown:
+Running the repo model for this mission (base 1.0 kW, dt = 1 s) gives **C2 (diesel + buffer) = 50.31 kg**, **26.35% generator efficiency (24.72% delivered)**, fuel **4.02 L/mission**, capex **$1,148.95**. The exact breakdown:
 
 | Term | Mass | Note |
 |---|---:|---|
@@ -29,7 +29,7 @@ This is a **screened** mass: radiator and converter are included. The “~49 kg�
 
 ## 2. The 35% case
 
-At 35% overall efficiency (a good small diesel, not the model’s 26.35%):
+At 35% generator efficiency (33.3% delivered; a good small diesel, not the model’s 26.35%):
 
 - Fuel falls from 4.02 L to **3.03 L** (fuel mass 3.14 kg).
 - Waste heat falls, so the radiator shrinks to **2.20 m² / 6.6 kg**.
