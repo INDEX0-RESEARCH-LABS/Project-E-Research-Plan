@@ -72,12 +72,12 @@ life and replacement cost.**
 
 | Delhi RSP | $/L | Fuel at 26.35% | Max replacement | Fuel at 35% | Max replacement |
 |---:|---:|---:|---:|---:|---:|
-| ₹80.00 | $0.846 | $0.340 | **$620** | $0.256 | **$1,040** |
-| ₹95.20 | $1.006 | $0.405 | **$295** | $0.305 | **$795** |
-| ₹110.00 | $1.163 | $0.467 | **$0** | $0.352 | **$560** |
+| ₹80.00 | $0.846 | $0.340 | **$621** | $0.256 | **$1,041** |
+| ₹95.20 | $1.006 | $0.404 | **$298** | $0.305 | **$797** |
+| ₹110.00 | $1.163 | $0.467 | **$0** | $0.352 | **$561** |
 
 A 15% fuel-price rise removes the 26.35% case entirely and cuts the 35%
-threshold to $560; a 16% fall makes the 26.35% case pass with a $620 engine.
+threshold to $561; a 16% fall makes the 26.35% case pass with a $621 engine.
 The pass is a two-variable knife-edge, not a robust result.
 
 Reproduce with `python3 limits.py` §11.

@@ -289,6 +289,17 @@ def report_m2_closure():
         print(f"  life {life:5d} h, 35%    -> " + " | ".join(row))
     print("  pass condition at 26.35%: replacement <= ~$295 at 10,000 h;")
     print("  pass condition at 35%:    replacement <= ~$795 at 10,000 h, or <=$1,500 at 20,000 h")
+    energy = (365.0 / 30.0) * 10.0 * 360.0
+    replacements = 8_760.0 * 10.0 / 10_000.0
+    print("  fuel-price sensitivity (10,000 h, 8.76 replacements, 43,800 kWh):")
+    for inr in (80.0, 95.2, 110.0):
+        usd = inr / 94.593871
+        row = []
+        for eta in (0.2635, 0.35):
+            fuel = usd / (DIESEL_KWH_PER_L * eta * ETA_CONV)
+            max_repl = max(0.0, 0.50 - fuel - 0.016 - 0.020) * energy / replacements
+            row.append(f"eta {eta:.4f}: fuel ${fuel:.3f}, max repl ${max_repl:.0f}")
+        print(f"    Rs {inr:6.2f}/L (${usd:.3f}): " + " | ".join(row))
 
 
 def report_m1_closure():
