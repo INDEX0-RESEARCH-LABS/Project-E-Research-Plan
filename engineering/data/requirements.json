@@ -1,0 +1,56 @@
+{
+  "version": "0.1",
+  "date": "2026-10-23",
+  "currency": "INR",
+  "status": "research targets, not feasibility claims",
+  "notes": [
+    "Targets are taken from the 2026-10-23 master directive.",
+    "A continuous-power target is meaningless without a service interval; the interval is recorded as unresolved where the directive does not state it.",
+    "The E-Micro envelope is an external 120 x 150 x 120 mm box (2.16 L); internal volume is smaller.",
+    "Costs are manufacturing targets, not quotes."
+  ],
+  "products": [
+    {
+      "id": "E-MICRO",
+      "name": "Two-wheeler energy core",
+      "continuous_kw": 3.0,
+      "peak_kw": null,
+      "peak_duration_s": null,
+      "envelope_mm": [120.0, 150.0, 120.0],
+      "envelope_l": 2.16,
+      "manufacturing_cost_inr": 50000.0,
+      "service_interval_h": null,
+      "load_profile": "unresolved: continuous 3 kWe assumed for the first screen",
+      "status": "research target",
+      "source": "master directive, 2026-10-23"
+    },
+    {
+      "id": "E-MOBILITY",
+      "name": "Passenger vehicle / light commercial energy core",
+      "continuous_kw": 20.0,
+      "peak_kw": null,
+      "peak_duration_s": null,
+      "envelope_mm": null,
+      "envelope_l": null,
+      "manufacturing_cost_inr": 200000.0,
+      "service_interval_h": null,
+      "load_profile": "unresolved",
+      "status": "research target",
+      "source": "master directive, 2026-10-23"
+    },
+    {
+      "id": "E-HEAVY",
+      "name": "Truck / heavy machinery energy core",
+      "continuous_kw": null,
+      "peak_kw": null,
+      "peak_duration_s": null,
+      "envelope_mm": null,
+      "envelope_l": null,
+      "manufacturing_cost_inr": 600000.0,
+      "service_interval_h": null,
+      "load_profile": "to be derived from documented duty cycles; no cycle is invented here",
+      "status": "unresolved",
+      "source": "master directive, 2026-10-23"
+    }
+  ]
+}
