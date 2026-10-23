@@ -24,6 +24,7 @@ The existing repository registry (`research/source_registry.csv`) is marked "abs
 | S10 | Luo et al., "Overview of current development in electrical energy storage technologies...," *Applied Energy* 137, 511–536 (2015) | 10.1016/j.apenergy.2014.09.081 | Match | Cross-technology efficiency/lifetime/cost | Review; dates quickly |
 | S11 | Winter, "Hydrogen and fuel cells: towards a sustainable energy future," *Energy Policy* 36, 4356–4362 (2008) | 10.1016/j.enpol.2008.09.036 | Match | Hydrogen/fuel-cell efficiency chain and infrastructure | Perspective; older costs |
 | S12 | Hung, Shai & Wang, "A review of organic Rankine cycles (ORCs) for the recovery of low-grade waste heat," *Energy* 22, 661–667 (1997) | 10.1016/s0360-5442(96)00165-x | Match | Low-grade heat-engine efficiency | Older; small/medium systems |
+| S13 | PPAC, "RSP of Diesel in Delhi as per IOCL outlet as on 21-October-2026, Rs. 95.20/ltr," Government of India | https://ppac.gov.in/archives/impnews | Verified 2026-10-23 | Delhi retail diesel price | Primary government source; one city, one date; excludes bulk/contract prices |
 
 ---
 

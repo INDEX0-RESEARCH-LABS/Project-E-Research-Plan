@@ -100,7 +100,7 @@ The supercapacitor row is buffer-only: its charging source is the parent system,
 
 ### Diesel fuel target
 
-At $1.40/L, C2 uses ~4.02 L per 10 kWh mission, or ~$5.63 of fuel, i.e. **~$0.56/kWh before capex**. The M1 target is $0.40/kWh. Diesel is fuel-limited at the benchmark price; this is a negative result, not a rounding issue.
+At the repo's $1.40/L, C2 uses ~4.02 L per 10 kWh mission, or ~$5.63 of fuel, i.e. **~$0.56/kWh before capex**. At the verified Delhi RSP of ₹95.20/L (PPAC, 2026-10-21; $1.006/L), the same fuel costs ~$4.05, or **$0.385/kWh**; the target then fails on capex, not fuel. The M1 target is $0.40/kWh; this is a negative result, not a rounding issue.
 
 ---
 

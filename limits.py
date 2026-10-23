@@ -20,7 +20,8 @@ ROUND_TRIP = 0.90        # storage round-trip
 ETA_CHAIN = ETA_CONV * DOD * ROUND_TRIP
 
 DIESEL_KWH_PER_L = 9.94  # LHV, standard fuel property
-DIESEL_USD_PER_L = 1.40  # E0 planning price
+DIESEL_USD_PER_L = 1.40  # E0 planning price (repo assumption)
+DIESEL_USD_PER_L_VERIFIED = 95.20 / 94.593871  # PPAC Delhi RSP 2026-10-21, INR/USD 2026-10-22
 H2_KWH_PER_KG = 33.33    # LHV, standard property
 H2_USD_PER_KG = 6.00     # E0 planning price
 SIGMA = 5.670374419e-8   # Stefan-Boltzmann, W/m2/K4
@@ -128,6 +129,7 @@ def hdr(title):
 # ---------------------------------------------------------------- self-checks
 def self_check():
     assert abs(converter_mass(MISSIONS[0]) - 11.25) < 1e-9
+    assert abs(fuel_cost_per_kwh(DIESEL_USD_PER_L_VERIFIED, DIESEL_KWH_PER_L, 0.263) - 0.385) < 0.001
     cells, cell, pack, _ = storage_bound(MISSIONS[0])
     assert 860 < cell < 868, cell
     assert 688 < pack < 694, pack
@@ -218,6 +220,25 @@ def report_cost():
         print()
 
 
+def report_diesel_sensitivity():
+    hdr("8. Diesel cost: verified Delhi price, efficiency, capex, duty")
+    price = DIESEL_USD_PER_L_VERIFIED
+    print(f"  verified Delhi RSP: Rs 95.20/L / 94.593871 = ${price:.4f}/L")
+    for eta in (0.263, 0.30, 0.35, 0.40):
+        print(f"  eta {eta:.1%}: fuel ${fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, eta):.3f}/kWh")
+    print("  total $/kWh = fuel + capex/(missions_per_year * 10 kWh * 10 y)")
+    for missions in (250, 500, 750):
+        for capex in (2000, 3000, 5000):
+            cap = capex / (missions * 10.0 * 10.0)
+            fuel = fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, 0.35)
+            print(f"    {missions:4d}/y  ${capex:5d}  capital ${cap:.3f}  "
+                  f"+ fuel(35%) ${fuel:.3f} = ${cap + fuel:.3f}")
+    print("  max capex for $0.40 at 250 missions/y:")
+    for eta in (0.263, 0.30, 0.35, 0.40):
+        fuel = fuel_cost_per_kwh(price, DIESEL_KWH_PER_L, eta)
+        print(f"    eta {eta:.1%}: ${max(0.0, (0.40 - fuel)) * 250 * 10 * 10:,.0f}")
+
+
 def report_sources():
     hdr("7. Source energy density at system level")
     print("  diesel LHV 9.94 kWh/L, 11.9 kWh/kg; at 30% = 3.6 kWh/kg fuel")
@@ -234,4 +255,5 @@ if __name__ == "__main__":
     report_heat()
     report_conversion()
     report_cost()
+    report_diesel_sensitivity()
     report_sources()

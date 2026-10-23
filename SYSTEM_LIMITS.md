@@ -220,11 +220,13 @@ c_\text{fuel} = \frac{\text{price per unit}}{\text{LHV per unit} \times \eta_\te
 
 | Fuel | Price (E0) | Efficiency | Fuel cost |
 |---|---:|---:|---:|
-| Diesel | $1.40/L | 26.3% | **$0.536/kWh** |
+| Diesel (repo assumption) | $1.40/L | 26.3% | **$0.536/kWh** |
+| Diesel (verified Delhi RSP, 2026-10-21) | ₹95.20/L = **$1.006/L** | 26.3% | **$0.385/kWh** |
 | H₂ | $6.00/kg | 50% LHV | **$0.360/kWh** |
 | H₂ | $4.00/kg | 50% LHV | **$0.240/kWh** |
 
-- Diesel at $1.40/L cannot meet the M1 $0.40/kWh target below **35.2% overall efficiency**, before any capital cost. The screened 26.3% is already $0.536.
+- At the repo's $1.40/L, diesel cannot meet the M1 $0.40/kWh target below **35.2% overall efficiency**, before capital. The screened 26.3% is $0.536.
+- At the **verified Delhi RSP** of ₹95.20/L on 2026-10-21 (PPAC, Government of India), diesel is **$1.006/L**, not $1.40/L. Fuel alone at 26.3% is **$0.385/kWh**. The repo's price is 39% high. The M1 target now fails on **capital**, not fuel: at $5,000 capex and 25,000 kWh over 10 years, capital is $0.200/kWh and the total is **$0.585/kWh**. Reaching $0.40 needs either η ≥ 35% with capex ≤ $2,800, or ~500 missions/year with the same capex.
 - H₂ at $6/kg consumes 90% of the M1 target on fuel alone. The CSV’s H5 threshold of $4/kg is the price at which fuel leaves room for capital.
 
 ### 8.2 Capital amortisation
@@ -294,7 +296,7 @@ These are the statements the program should test, not defend:
 1. **L1:** With \(p_c \ge 0.5\) kg/kW and 1.25 packaging, no electrochemical storage at ≤300 Wh/kg cell meets M1 at 35 kg. *(Arithmetic; falsified only by a measured cell above the threshold or a different mission boundary.)*
 2. **L2:** M1 at 35 kg with a 1.5 kg/kW converter requires ≥864 Wh/kg cell (691 Wh/kg pack); with 0.5 kg/kW, ≥638 Wh/kg cell (510 Wh/kg pack). *(Arithmetic; conditional on the stated assumptions.)*
 3. **L3:** Any 10 kWe converter at ≤40% efficiency rejects ≥15 kW; in still air at 1 kW/m² that needs ≥15 m². *(Conservation plus heat transfer.)*
-4. **L4:** Diesel at $1.40/L needs ≥35.2% overall efficiency to reach $0.40/kWh before capital. *(Arithmetic.)*
+4. **L4:** Diesel needs ≥35.2% overall efficiency to reach $0.40/kWh *before capital* at $1.40/L; at the verified Delhi price ($1.006/L) fuel alone is $0.385/kWh at 26.3%, so the binding constraint becomes capex and duty cycle. *(Arithmetic; PPAC RSP 2026-10-21.)*
 5. **L5:** H₂ at $6/kg cannot meet M1 at $0.40/kWh even at 100% duty: fuel is $0.36/kWh and the capital requires 12,500 missions, above the 10,950 maximum. *(Arithmetic under stated assumptions.)*
 6. **L6:** A graphite sensible store cannot exceed ~0.14 kWh/kg usable over a 1500→800 K swing. *(Material property.)*
 7. **L7:** A battery-only M2 requires ≥1,100 Wh/kg pack. *(Arithmetic.)*
