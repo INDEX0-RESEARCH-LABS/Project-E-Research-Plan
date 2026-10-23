@@ -143,6 +143,9 @@ def self_check():
     assert abs(fuel_cost_per_kwh(DIESEL_USD_PER_L, DIESEL_KWH_PER_L, 0.263) - 0.536) < 0.002
     assert abs(fuel_cost_per_kwh(H2_USD_PER_KG, H2_KWH_PER_KG, 0.50) - 0.360) < 0.002
     assert abs(carnot(1800) - 0.83333) < 1e-4
+    r = m2_cycle_case(3.0, 0.35, 200.0)
+    assert abs(r["total_usd_kwh"] - 0.499) < 0.002, r["total_usd_kwh"]
+    assert abs(r["mass_kg"] - 317.0) < 1.0, r["mass_kg"]
     # identity: (E/eta)*eta == E
     for m in MISSIONS:
         assert abs(nameplate_kwh(m) * ETA_CHAIN - m.energy_kwh) < 1e-9
@@ -358,6 +361,51 @@ def report_diesel_sensitivity():
         print(f"    eta {eta:.1%}: ${max(0.0, (0.40 - fuel)) * 250 * 10 * 10:,.0f}")
 
 
+def m2_cycle_case(genset_kw=3.0, eta=0.35, battery_usd_kwh=200.0,
+                  battery_kwh=13.333, life_h=10_000.0):
+    """M2 with a standard genset run at rated load to charge a daily buffer.
+
+    Delivered 12 kWh/day; 0.95 converter, 0.90 battery round-trip; 30-day
+    mission. Fuel is per mission (not per day). Engine hours are per year.
+    """
+    e_day = 12.0
+    days = 30.0
+    fuel_kwh_day = e_day / (eta * 0.95 * 0.90)
+    fuel_l = fuel_kwh_day / DIESEL_KWH_PER_L * days
+    hours_year = fuel_kwh_day / (genset_kw / eta) * 365.0
+    mass = (genset_kw * 12.0 + battery_kwh * 1000.0 / 175.0
+            + fuel_l * 0.83 * 1.25) * 1.25
+    waste = genset_kw / eta - genset_kw
+    area = waste * 1000.0 * 0.35 / (10.0 * 40.0)
+    mass += area * 3.0 + genset_kw * 1.5 * 1.25
+    capex = genset_kw * 400.0 + battery_kwh * battery_usd_kwh + genset_kw * 80.0
+    capital = capex / 43_800.0
+    fuel_cost = fuel_l * 1.0064 / 360.0
+    repl = (hours_year * 10.0 / life_h) * (genset_kw * 400.0) / 43_800.0
+    total = fuel_cost + capital + 0.020 + repl
+    return dict(genset_kw=genset_kw, eta=eta, battery_usd_kwh=battery_usd_kwh,
+                fuel_l=fuel_l, hours_year=hours_year, mass_kg=mass,
+                capex_usd=capex, fuel_usd_kwh=fuel_cost,
+                capital_usd_kwh=capital, repl_usd_kwh=repl,
+                total_usd_kwh=total)
+
+
+def report_m2_cycle():
+    hdr("11b. M2 alternative: cycle-charging a standard genset + 13.3 kWh buffer")
+    print("  12 kWh/day delivered; 0.95 converter x 0.90 battery; 30 days;")
+    print("  genset runs at rated load; 10,000 h engine; $400/kW; $200-300/kWh battery")
+    print("  gset  eta  bat$   fuel_L   h/y   mass_kg   capex$   LCOE")
+    for gk in (3.0, 5.0):
+        for eta in (0.35, 0.40):
+            for buc in (200.0, 300.0):
+                r = m2_cycle_case(gk, eta, buc)
+                print(f"  {gk:4.1f} {eta:5.0%} {buc:5.0f} {r['fuel_l']:8.0f} "
+                      f"{r['hours_year']:6.0f} {r['mass_kg']:9.0f} "
+                      f"{r['capex_usd']:8.0f}   ${r['total_usd_kwh']:.3f}")
+    print("  note: 5 kW peak is battery-supported; 13.3 kWh at 90% DoD;")
+    print("  3,650 cycles/10 y is at the LFP limit; a battery replacement adds ~$0.06.")
+
+
 def report_sources():
     hdr("7. Source energy density at system level")
     print("  diesel LHV 9.94 kWh/L, 11.9 kWh/kg; at 30% = 3.6 kWh/kg fuel")
@@ -379,3 +427,4 @@ if __name__ == "__main__":
     report_m3_closure()
     report_m1_closure()
     report_m2_closure()
+    report_m2_cycle()

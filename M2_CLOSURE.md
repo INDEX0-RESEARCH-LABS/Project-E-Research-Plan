@@ -116,6 +116,48 @@ site, with storage, spill control, and a 30-day buffer. This is not modelled.
 5. **Fuel price and supply.** ₹95.20/L is the Delhi RSP (PPAC, 2026-10-21);
    remote delivery adds cost and is not included.
 
+## 5.1 Alternative: cycle-charging a standard 3–5 kW genset
+
+The C2 baseline runs a 0.58 kW genset continuously (8,760 h/y). An alternative
+is a standard 3–5 kW genset run at rated load for a few hours per day to charge
+a 13.3 kWh buffer; the buffer serves the 0.5 kW average and the 5 kW peak.
+This dispatch is **not** in the repo's `diesel_hybrid` model (which is
+continuous).
+
+Assumptions: 12 kWh/day delivered; 0.95 converter × 0.90 battery round-trip;
+30 days; 10,000 h engine; $400/kW genset; 175 Wh/kg, $200–300/kWh battery;
+radiator 10 W/m²K, ΔT 40 K, 3 kg/m²; 1.25 packaging.
+
+| Genset | η | Battery $/kWh | Fuel L/30 d | Engine h/y | Mass kg | Capex $ | LCOE $/kWh |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 kW | 35% | 200 | 121 | 1,708 | 317 | 4,107 | **0.499** |
+| 3 kW | 35% | 300 | 121 | 1,708 | 317 | 5,440 | 0.529 |
+| 3 kW | 40% | 200 | 106 | 1,708 | 295 | 4,107 | **0.457** |
+| 3 kW | 40% | 300 | 106 | 1,708 | 295 | 5,440 | 0.487 |
+| 5 kW | 35% | 200 | 121 | 1,025 | 361 | 5,067 | 0.521 |
+| 5 kW | 35% | 300 | 121 | 1,025 | 361 | 6,400 | 0.551 |
+| 5 kW | 40% | 200 | 106 | 1,025 | 337 | 5,067 | 0.479 |
+| 5 kW | 40% | 300 | 106 | 1,025 | 337 | 6,400 | 0.509 |
+
+**What it buys:** the engine runs 1,025–1,708 h/y instead of 8,760, so a
+10,000 h engine lasts 6–10 years and needs 1.0–1.7 replacements, not 8.8.
+**What it costs:** a 13.3 kWh battery ($2.7–4.0k) and battery round-trip losses
+(fuel 121 L vs 109 L at 35%). The net at 35%/$200 is **$0.499** — a marginal
+pass, not a comfortable one. At 40%/$200 it is **$0.457–0.479**, a real pass.
+
+**Caveats:** (1) the battery cycles 3,650 times in 10 years at 90% DoD, at the
+LFP limit; a replacement adds ~$0.06/kWh and fails the 35% case; (2) the 5 kW
+peak is battery-supported, but a 5 kW **continuous** load invalidates the 3 kW
+genset; (3) 35% efficiency is still an assumption, not a quoted engine; (4) the
+converter/charger is one 0.95 block; two conversions would cut efficiency and
+raise fuel ~5%.
+
+**Verdict on the alternative:** it does **not** turn M2 into a comfortable
+pass. It is a hedge: if the 0.58 kW engine is expensive ($1,000), the 3 kW
+cycle-charging path at 35%/$200 ($0.499) beats it ($0.541); if the small engine
+is $232–$500, the continuous path is better ($0.387–$0.441). The binding
+variables remain engine efficiency, engine price, and now battery price/life.
+
 ## 6. Verdict
 
 **M2 passes all four numeric targets with a conventional diesel genset only
@@ -125,7 +167,10 @@ under a narrow condition:**
 - 35% generator and replacement ≤$795 at 10,000 h (≤$1,500 at 20,000 h).
 
 At the model's $232 replacement it passes at $0.487; at a realistic $500–$1,000
-it fails or is marginal. **M2 is the feasibility leader among M1–M5, but it is
+it fails or is marginal. A cycle-charging alternative (standard 3 kW genset + 13.3 kWh
+buffer) reaches $0.499 at 35% and $200/kWh, but is a hedge rather than a
+robust pass: it needs 40% efficiency for margin and a battery at 3,650
+cycles/10 y. **M2 is the feasibility leader among M1–M5, but it is
 conditional, and its binding term is the engine, not the battery.** It is not a
 compact-core mission: 212 kg and 250 L.
 
