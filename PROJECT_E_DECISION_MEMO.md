@@ -128,7 +128,7 @@ No candidate is above E1. No system-level result exists.
 
 **Fix M3's load definition, then close one 10 kWh pack datasheet at its boundary — and decide whether M3 or M2 is the real first target.**
 
-**Counter-evidence (2026-10-23):** M2's diesel route is **212 kg and $0.441/kWh** at 26.35%, passing all four numeric targets before engine replacement; with a 10,000 h engine it is $0.487. On **feasibility**, M2 now outranks M3. On **compactness**, M3 (100 kg) still leads. The next decision is the axis, not the component.
+**Counter-evidence (2026-10-23):** M2's diesel route is **212 kg and $0.441/kWh** at 26.35% before engine replacement, but passes $0.50 only if the engine replacement is ≤**$295** at 10,000 h (or ≤$795 at 35%); a realistic $1,000 replacement fails. On **feasibility**, M2 leads **conditionally**. On **compactness**, M3 (100 kg) still leads. The next decision is the axis, not the component. See `M2_CLOSURE.md`.
 
 The converter question is now measured, not guessed: a Cascadia PM100 is **7.5 kg at 100 kW** (166 Wh/kg pack required) and a Deye 30 kW 50 Hz inverter is **80 kg** (≥840 Wh/kg, impossible at 100 kg). So the decisive unknown is no longer kg/kW; it is **what the 30 kW load is**.
 
@@ -232,7 +232,7 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 
 **No candidate is selected.** Rank 1 is a decision-analysis task, not a technology winner.
 
-**Axis note (2026-10-23):** on **feasibility**, M2 is now first: a diesel C2 at 26.35% is 212 kg and **$0.441/kWh**, passing all four numeric targets before engine replacement; with a 10,000 h engine it is $0.487. On **compactness**, M3 is first: 100 kg at 166 Wh/kg and zero margin. The project has not chosen which axis it is optimising. See `MISSION_MATRIX.md` §4.1.
+**Axis note (2026-10-23):** on **feasibility**, M2 is first, **conditionally**: a diesel C2 at 26.35% is 212 kg and **$0.441/kWh** before engine replacement, but passes $0.50 only if the engine replacement is ≤**$295** at 10,000 h (or ≤$795 at 35%). A realistic $1,000 replacement fails. On **compactness**, M3 is first: 100 kg at 166 Wh/kg and zero margin. The project has not chosen which axis it is optimising. See `M2_CLOSURE.md` and `MISSION_MATRIX.md` §4.1.
 
 ---
 

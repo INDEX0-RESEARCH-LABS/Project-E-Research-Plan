@@ -256,6 +256,41 @@ def m1_breakdown(eta=0.2635, source_kg_kw=12.0, h=10.0, packaging=1.25,
                 total=subtotal + rad_m + conv_m + tank_kg)
 
 
+def m2_lcoe(eta_gen=0.2635, engine_life_h=10_000.0, replacement_usd=232.0,
+            missions_per_year=365.0/30.0, years=10.0, capex_usd=722.0, om_usd=0.02):
+    """M2 diesel LCOE per delivered kWh, including engine replacement."""
+    E = 360.0
+    fuel_l = E / (eta_gen * ETA_CONV * DIESEL_KWH_PER_L)
+    fuel = fuel_l * DIESEL_USD_PER_L_VERIFIED / E
+    energy = missions_per_year * years * E
+    capital = capex_usd / energy
+    hours = 720.0 * missions_per_year * years
+    repl = (hours / engine_life_h) * replacement_usd / energy
+    return dict(fuel=fuel, capital=capital, repl=repl, om=om_usd,
+                total=fuel + capital + repl + om_usd, litres=fuel_l)
+
+
+def report_m2_closure():
+    hdr("11. M2 closure: diesel pass and engine-replacement sensitivity")
+    b = m2_lcoe()
+    print(f"  baseline 26.35%: {b['litres']:.1f} L; fuel ${b['fuel']:.3f} + capital "
+          f"${b['capital']:.3f} + engine ${b['repl']:.3f} + O&M ${b['om']:.3f} = ${b['total']:.3f}/kWh")
+    for life in (5_000, 10_000, 20_000):
+        row = []
+        for repl in (232, 500, 1000, 1500):
+            v = m2_lcoe(engine_life_h=life, replacement_usd=repl)
+            row.append(f"${repl}: {v['total']:.3f}")
+        print(f"  life {life:5d} h, 26.35% -> " + " | ".join(row))
+    for life in (10_000, 20_000):
+        row = []
+        for repl in (500, 1000, 1500):
+            v = m2_lcoe(eta_gen=0.35, engine_life_h=life, replacement_usd=repl)
+            row.append(f"${repl}: {v['total']:.3f}")
+        print(f"  life {life:5d} h, 35%    -> " + " | ".join(row))
+    print("  pass condition at 26.35%: replacement <= ~$295 at 10,000 h;")
+    print("  pass condition at 35%:    replacement <= ~$795 at 10,000 h, or <=$1,500 at 20,000 h")
+
+
 def report_m1_closure():
     hdr("10. M1 closure: C2 diesel mass, 35% case, BOP ladder")
     b = m1_breakdown()
@@ -332,3 +367,4 @@ if __name__ == "__main__":
     report_diesel_sensitivity()
     report_m3_closure()
     report_m1_closure()
+    report_m2_closure()

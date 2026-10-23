@@ -59,12 +59,12 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 | Mission | Required pack (1.5 kg/kW) | Required pack (0.5 kg/kW) | Nameplate / envelope | Waste heat | Capex check | Binding constraint |
 |---|---:|---:|---:|---:|---|---|
 | M1 | 691 Wh/kg | 510 Wh/kg | 244 Wh/L | 0.16 kW battery; 3.5 kW diesel | 1,667 missions needed; 1/day feasible | **mass + volume + cost** |
-| M2 | 1,127 Wh/kg (battery) | 1,112 Wh/kg (battery) | 250 L (diesel) | ~1.5 kW diesel | diesel $722 capex, **$0.441/kWh** at 26.35%; $0.487 with a 10,000 h engine | **engine life + fuel logistics** |
+| M2 | 1,127 Wh/kg (battery) | 1,112 Wh/kg (battery) | 250 L (diesel) | ~1.5 kW diesel | diesel $722 capex, **$0.441/kWh** at 26.35% before engine; passes only if replacement ≤$295 (26.35%) or ≤$795 (35%) at 10,000 h | **engine life + fuel logistics + peak duration** |
 | M3 | 355 Wh/kg | 186 Wh/kg | 97 Wh/L | ~1.1 kW continuous | 2,222 missions needed; 3/day feasible | **converter + load type** |
 | M4 | n/a (generator) | n/a | n/a | 30 kW at 25%; 15 kW at 40% | $10k capex; radiator mass not priced | **heat rejection** |
 | M5 | 256 Wh/kg | 242 Wh/kg | 146 Wh/L | ~111 kW at 90% path | charging $0.10 > $0.08 target | **electricity price + cost** |
 
-**Reading the table:** M1 cannot be closed by known storage or a realistic genset. M2 cannot be closed by storage but **can** by diesel (212 kg, $0.441/kWh at 26.35%), making it the feasibility leader. M3 is conditional on a 166 Wh/kg pack and a DC/motor load. M5 is electricity-price-bound. M4 is a heat-rejection and heat-source problem.
+**Reading the table:** M1 cannot be closed by known storage or a realistic genset. M2 cannot be closed by storage but **can** by diesel (212 kg, $0.441/kWh at 26.35%) **if the engine replacement is cheap enough**, making it the conditional feasibility leader. M3 is conditional on a 166 Wh/kg pack and a DC/motor load. M5 is electricity-price-bound. M4 is a heat-rejection and heat-source problem.
 
 **M3 measured-converter update (2026-10-23):** a Cascadia PM100 traction inverter is **7.5 kg at 100 kW** (0.25 kg/kW at 30 kW), which leaves 88 kg for the pack and requires only **166 Wh/kg pack** — at the edge of current EV packs. A Deye 30 kW 50 Hz hybrid inverter is **80 kg**, which consumes the 100 kg budget before the pack and requires **≥840 Wh/kg**. M3 therefore passes or fails on **one definition: motor/DC load vs 50 Hz AC load**. At zero mass margin; a 10 kg (10%) reserve raises the requirement to **187 Wh/kg**. See `M3_CLOSURE.md` and `COMPONENT_EVIDENCE.md`.
 
@@ -92,7 +92,7 @@ Reconstruction from the repo’s C2 formulas (360 kWh, 720 h, 5 kW peak, 0.58 kW
 | 26.35% gen. | 144.7 L | **212 kg** | **$722** | $0.016 | $0.405 | $0.020 | **$0.441/kWh** |
 | 35% gen. | 108.9 L | 164 kg | $722 | $0.016 | $0.305 | $0.020 | **$0.341/kWh** |
 
-Both pass 500 kg, 1,000 L, $50,000, and $0.50/kWh. The diesel route is **not** source-bound; the battery route is (1,112 Wh/kg pack).
+Both pass 500 kg, 1,000 L, $50,000, and $0.50/kWh **before engine replacement**. The diesel route is **not** source-bound; the battery route is (1,112 Wh/kg pack).
 
 **The binding term is engine life.** 720 h/mission × 12.2 missions/year = 8,760 h/year; over 10 years, 87,600 h. At a 10,000 h engine life, ~8.8 replacements × $232 (the genset share of capex) = $2,032, or **+$0.046/kWh**:
 
@@ -101,7 +101,7 @@ Both pass 500 kg, 1,000 L, $50,000, and $0.50/kWh. The diesel route is **not** s
 | 10,000 h | $0.046 | **$0.487 (passes)** | $0.387 (passes) |
 | 5,000 h | $0.093 | $0.534 (fails) | **$0.434 (passes)** |
 
-**Verdict:** M2 is **engine-life- and efficiency-bound**, not capex-inconsistent. It is the only mission that closes all four numeric targets with conventional technology, subject to fuel logistics (145 L per 30 days), emissions/noise, cold start at −20 °C, and engine life. This is a **feasibility** result, not a deployability claim.
+**Verdict:** M2 is **engine-life- and efficiency-bound**, not capex-inconsistent. It closes all four numeric targets with conventional diesel **only under a narrow condition**: replacement ≤**$295** at 26.35% (10,000 h) or ≤**$795** at 35% (10,000 h; ≤$1,500 at 20,000 h). A realistic $1,000 replacement fails. Subject also to fuel logistics (145 L per 30 days), a defined 5 kW peak duration, emissions/noise, and cold start at −20 °C. This is a **conditional feasibility** result, not a deployability claim. See `M2_CLOSURE.md`.
 
 ---
 
