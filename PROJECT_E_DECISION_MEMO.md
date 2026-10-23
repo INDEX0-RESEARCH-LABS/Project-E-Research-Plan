@@ -323,7 +323,7 @@ The evidence points away from a better cell and toward a **system** invention. F
 
 1. **M1’s mass-feasible source is chemical, not electrochemical.** Diesel at ~49 kg is the lightest screened M1 system; the battery path needs 510–691 Wh/kg pack.
 2. **M1’s cost-feasible system is a cheap, ~35%-efficient genset hybrid at Indian fuel prices.** At ₹95.20/L, $2,000 capex, and 250 missions/year, the total is **$0.369/kWh**; the same system at $5,000 capex is $0.489. Capex and duty cycle decide the target, not fuel.
-3. **The remaining mass gap is balance-of-plant.** The engine, buffer, and fuel are ~23 kg; radiator, enclosure, converter, and packaging are ~26 kg. A 13–14 kg BOP reduction is the actual M1 problem.
+3. **The remaining mass gap is balance-of-plant, and the converter is load-type-dependent.** The engine, buffer, and fuel are ~23 kg; radiator, enclosure, converter, and packaging are ~26 kg. A 5 kVA Victron AC inverter alone is 19 kg, while a 100 kW PM100 motor inverter is 7.5 kg. A 13–14 kg BOP reduction is the actual M1 problem.
 4. **The invention is therefore a sealed fuel-cartridge generator with an integrated pulse buffer and a low-mass radiator/enclosure** — not a 600 Wh/kg cell. The cartridge carries energy; the buffer carries the 30 s pulse; the converter and radiator are the mass battleground.
 
 **Falsifiable test (paper or bench, Gate 3/4):** assemble a 1.5 kW genset, 0.3 kWh buffer, 3.5 kW heat rejection, converter, and enclosure in **≤35 kg** at **≤$2,800**. If BOP mass alone exceeds 20 kg, the thesis fails and M1 should be re-scoped.
