@@ -201,15 +201,15 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 
 ### Q12. What should the project do during its first seven days?
 
-1. Re-verify `e75be96` and the 57 tests; archive the output.
-2. Record D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`); no mission change.
-3. Repair or explicitly accept the M2 and M5 target inconsistencies.
-4. Obtain three datasheets: 6 kW inverter, 30 kW inverter, 10 kWh LFP/NMC pack.
-5. Add page/figure locators for S01, S04, N01, N02, N08.
-6. Run `screening.py` and `limits.py`; archive the outputs.
-7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package.
-8. Choose **M3** as the first Gate 3 target (recommended) or M2; do not start both.
-9. Spend nothing; buy nothing; start no experiment; do not edit Project-E; do not commit or push.
+1. Re-verify `e75be96` and the 57 tests; archive the output. **Done.**
+2. Record D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`); no mission change. **Done (N-30).**
+3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Pending.**
+4. Datasheets: 30 kW converter **done** (PM100 7.5 kg; Deye 80 kg). Still needed: a 6 kW inverter and a 10 kWh pack at ≥166 Wh/kg pack-level.
+5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 still pending.
+6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
+7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package. **Pending.**
+8. **M3 is the provisional first Gate 3 target, conditional on a DC/motor load.** M1 is not a Gate 3 target at 35 kg: `M1_CLOSURE.md` shows 45.6 kg at 35% and 38.8–46.8 kg at realistic genset mass.
+9. Project-E is frozen at `e75be96`. Commits and pushes to **this plan** are authorised. No purchase, no experiment, no hardware spend.
 
 ---
 
