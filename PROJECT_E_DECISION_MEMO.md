@@ -244,7 +244,7 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 | M1 118.3 kg at 175 Wh/kg | **High** | Arithmetic + reproduced table |
 | M1 510–691 Wh/kg pack requirement | **High** (conditional) | Depends on converter and packaging assumptions |
 | M2 battery impossibility | **High** | 1,100+ Wh/kg pack, 4–7× gap |
-| M4 30 kW waste / 30 m² radiator | **High** (order of magnitude) | Conservation + \(h\) assumption |
+| M4 30 kW waste / 26–30 m², 79–150 kg radiator | **High** (order of magnitude) | Conservation + \(h\) assumption; converter capex is the binding term |
 | M3 near-feasibility | **Medium** | Converter mass unmeasured |
 | Diesel/H₂/TPV system masses | **Medium** | Screening estimates, no datasheets |
 | Costs and LCOE | **Low** | E0 prices, no quotes |

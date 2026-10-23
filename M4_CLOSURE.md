@@ -24,7 +24,9 @@ m = 3\,\text{kg/m}^2 \times 26.25 = 78.8\ \text{kg}.
 
 At 40%, 15 kW rejected: **13.1 m², 39.4 kg**. The radiator is large but
 feasible for a stationary unit; it is **not** the binding term. The matrix’s
-earlier “150 kg at 25%” used a higher areal mass; the repo formula gives 79 kg.
+150 kg corresponds to \(h=50\), \(\Delta T=20\) K, 5 kg/m²; the repo formula
+(\(h=10\), \(\Delta T=40\) K, 3 kg/m²) gives 79 kg. The range is **26–30 m² and
+79–150 kg**; feasible either way.
 
 ## 3. Converter capex: the binding term
 

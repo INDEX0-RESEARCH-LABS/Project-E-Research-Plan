@@ -43,10 +43,10 @@ Ranking is by **system leverage** (how much the mission verdict moves per unit o
 | Rank | Bottleneck | Quantitative evidence | Type | Missions affected | Leverage | Cheapest decisive evidence |
 |---:|---|---|---|---|---|---|
 | **B1** | Storage specific energy | M1 needs 510–691 Wh/kg pack (638–864 cell); best credible 150–250 pack; M2 needs 1,112–1,127 pack | Fundamental materials + engineering | M1, M2, M5 | **Very high** | Supplier datasheets + 1–2 cell tests |
-| **B2** | Source energy density and fuel logistics | Diesel 3.6 kWh/kg fuel at 30% vs Li-ion 0.15–0.25 kWh/kg pack; M2 battery needs 3,770 kg vs diesel ~165 kg | Fundamental source choice + engineering | M2, M1 | **Very high** | Paper comparison + fuel-price quotes |
-| **B3** | Heat rejection | M4 10 kWe at 25% rejects 30 kW → 30 m² forced air, ~150 kg; M1 diesel 3.5 kW → ΔT 76 K in 60 L | Fundamental (conservation) + engineering (h, fins) | M4, M1-diesel, M3 | **High** | Thermal bench + CFD only after lumped model |
+| **B2** | Source energy density and fuel logistics | Diesel 3.6 kWh/kg fuel at 30% vs Li-ion 0.15–0.25 kWh/kg pack; M2 battery needs 3,770 kg vs diesel **212 kg** | Fundamental source choice + engineering | M2, M1 | **Very high** | Paper comparison + fuel-price quotes |
+| **B3** | Heat rejection | M4 10 kWe at 25% rejects 30 kW → **26–30 m², 79–150 kg**; M1 diesel 3.5 kW → ΔT 76 K in 60 L | Fundamental (conservation) + engineering (h, fins) | M4, M1-diesel, M3 | **High** | Thermal bench + CFD only after lumped model |
 | **B4** | Converter specific mass | Real 30 kW units span **7.5 kg** (PM100 motor inverter) to **80 kg** (Deye 50 Hz hybrid). M3 needs 166 Wh/kg pack with the former, ≥840 with the latter. The 1.5 kg/kW assumption is 6× the PM100 | Measured, but load-type-dependent | M1, M3 | **High** | One pack datasheet; define M3's load |
-| **B5** | Cost and duty cycle | M2 $50k capex = $1.14/kWh before fuel; M5 charging $0.10 > $0.08 target; at verified ₹95.20/L, M1 diesel is $0.385/kWh at 35%, $2,000 capex, 250 missions/y (capex ceiling $2,387), but $0.505 at $5,000; at 26.35%, fuel alone is $0.405 | Arithmetic + market | M2, M5, M1 | **High** | Mission redesign + price quotes |
+| **B5** | Cost and duty cycle | M2’s $50k is a ceiling; a $722 diesel system is $0.441/kWh before engine replacement, passing only if ≤$295 (26.35%) or ≤$795 (35%); M5 charging $0.10 delivers $0.144/kWh vs $0.08; at verified ₹95.20/L, M1 diesel is $0.385/kWh at 35%, $2,000 capex, 250 missions/y (capex ceiling $2,387), but $0.505 at $5,000; at 26.35%, fuel alone is $0.405 | Arithmetic + market | M2, M5, M1 | **High** | Mission redesign + price quotes |
 | **B6** | Volume | M1 244 Wh/L required; pack 250–400 Wh/L; converter/BOP volume excluded | Engineering | M1 | Medium | Pack + converter volume datasheets |
 | **B7** | Safety and regulation | Nuclear licensing, H₂ embrittlement/leak, Li-metal fire; binary pass/fail | Regulatory + engineering | M2, M1 | **Binary** | Regulatory pathway study; no experiment |
 | **B8** | Lifetime and degradation | M1 needs ≥1,667 missions; M5 4,000 cycles; no cycle-life model yet | Engineering | M1, M5 | Medium | Vendor cycle data + accelerated test |
@@ -64,7 +64,7 @@ But leverage is not feasibility. The required values are 2–4× the best credib
 
 ### B2 — Source energy density and fuel logistics
 
-At M2, the battery mass is ~3,770 kg against a 500 kg target. Diesel fuel plus a 5 kW genset is ~165 kg. The source, not the converter, decides M2. The same logic explains why M1 diesel is lighter than M1 battery (49 vs 118 kg) yet still misses 35 kg and loses on fuel cost and heat.
+At M2, the battery mass is ~3,770 kg against a 500 kg target. The C2 diesel system is **212 kg** (fuel, 0.58 kW genset, converter, radiator, packaging), still under 500 kg. The source, not the converter, decides M2. The same logic explains why M1 diesel is lighter than M1 battery (50.3 vs 118 kg) yet still misses 35 kg; at 35% and $2k capex it passes cost, but mass is 45.6 kg.
 
 The source hierarchy is:
 

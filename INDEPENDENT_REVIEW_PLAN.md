@@ -100,8 +100,8 @@ The reviewer must independently check at least these, and may add more:
 | 7 | TPV usable store | 484–806 kg | The largest physics correction |
 | 8 | Diesel fuel cost at $1.40/L, 26.3% | ~$0.536/kWh | Shows the M1 cost failure |
 | 9 | H₂ fuel cost at $6/kg, 50% | ~$0.360/kWh | Shows why H5 is parked |
-| 10 | M2 capital cost | ~$1.14/kWh | Shows the mission target is inconsistent |
-| 11 | M4 radiator at 25%, 10 kWe | ~30 m², ~150 kg | Shows heat is not free |
+| 10 | M2 capital cost | $0.016/kWh with a $722 diesel system; $1.14 only if the $50k cap is spent | Shows the cap is not a spend; engine replacement binds |
+| 11 | M4 radiator at 25%, 10 kWe | 26–30 m², 79–150 kg | Shows the range; converter capex is the binding term |
 | 12 | Graphite usable store | ~0.10 kWh/kg | Checks the 0.28 full-swing error |
 
 A reviewer who cannot reproduce a number must say so in the issue log, not silently correct it.

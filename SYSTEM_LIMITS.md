@@ -170,7 +170,7 @@ The \(T^4\) dependence is why a 350 K radiator is ~58× larger than an 800 K rad
 - **M1 diesel:** 1.25 kW average at 26.3% overall rejects **3.50 kW**. In a 60 L box at \(h=50\), that needs \(\Delta T = 76\) K, or an external ducted area of **3.5 m²** at \(\Delta T=20\) K. The box surface is 0.92 m². The diesel option is thermally stressed even before noise, emissions, and fuel logistics.
 - **M1 battery:** ~163 W average (round-trip plus pulse duty) needs \(\Delta T \approx 3.5\) K. Thermally easy.
 - **M3:** 10 kW continuous at ~90% path efficiency rejects ~1.1 kW; a 150 L enclosure gives \(\Delta T \approx 13\) K. The 30 kW/10 s pulse is handled by thermal mass, not steady area. Feasible, but the converter and buffer must be co-designed.
-- **M4:** 10 kWe at 25% rejects **30 kW**. Forced air at \(h=50\), \(\Delta T=20\) needs **30 m²** and ~150 kg at 5 kg/m². At 40% it is 15 m² and ~75 kg. A “$1/W” target that omits this heat-rejection mass is not a system cost.
+- **M4:** 10 kWe at 25% rejects **30 kW**. Forced air needs **26–30 m² and 79–150 kg** depending on \(h=10–50\), \(\Delta T=20–40\) K, and 3–5 kg/m²; at 40%, 13–15 m² and 39–75 kg. The radiator is feasible and adds ~$0.8–1.5k, not the binding term. The **converter capex** is: a 10 kW Stirling is $140k–$185k ($14–18.5/W) against $1/W.
 
 ---
 
@@ -204,8 +204,8 @@ The battery term is the 175 Wh/kg pack basis plus fixed converter/BOP. The diese
 
 - Below ~3.7 kWh, a battery is lighter.
 - Above ~3.7 kWh, a chemical fuel is lighter **at this power scale**.
-- At M1 (10 kWh), diesel is 50.3 kg screened (45.6 kg at 35%) vs battery ~118 kg: the benchmark’s mass problem is not a battery problem, it is a **source** problem. Diesel then still misses 35 kg by ~14 kg and fails on fuel cost ($0.536/kWh), heat (3.5 kW), emissions, and noise.
-- At M2 (360 kWh), diesel is ~165 kg vs battery ~3,770 kg: chemical wins by ~23×.
+- At M1 (10 kWh), diesel is 50.3 kg screened (45.6 kg at 35%) vs battery ~118 kg: the benchmark’s mass problem is not a battery problem, it is a **source** problem. Diesel then still misses 35 kg by ~15 kg. At 26.35% it fails on fuel cost ($0.405); at 35% with $2,000 capex it passes cost ($0.385) but is 45.6 kg. Heat, emissions, and noise remain.
+- At M2 (360 kWh), the C2 diesel system is **212 kg** vs battery ~3,770 kg: chemical wins by ~18×.
 - At M5 (4 MWh), a 1 MW engine is 5–10 t, so the linear model no longer applies; stationary batteries win on cost, emissions, and maintenance.
 
 **The binding constraint changes with mission scale.** A single “best architecture” is therefore incoherent without a mission.
@@ -246,8 +246,8 @@ N_\text{required} = \frac{C_\text{capex}}{(c_\text{target} - c_\text{fuel})E_\te
 
 Two mission definitions fail their own arithmetic:
 
-- **M2:** $50,000 capex over 122 lifetime missions and 43,920 kWh gives **$1.14/kWh capital alone**, before fuel. To meet $0.50/kWh with zero fuel, capex must be ≤ **$21,960**. A nuclear unit will not be. M2 must either lower capex, extend life beyond ~23 years, or raise the LCOE target to ~$1.20/kWh. This is a mission-definition defect, not a physics result.
-- **M5:** charging at $0.10/kWh already exceeds the $0.08/kWh target. At $0.05/kWh charging, capital $0.03/kWh gives $0.086/kWh — still above target. M5 is **electricity-price-bound**, not technology-bound.
+- **M2:** the $50,000 is a **ceiling, not a spend**. A diesel C2 is $722, so capital is **$0.016/kWh**; fuel is $0.405 at 26.35%, and the total is $0.441 before engine replacement. If the full $50k were spent, capital alone would be $1.14/kWh — the nuclear/battery case, not diesel. The binding term is **engine replacement**: ≤$295 at 26.35% or ≤$795 at 35% (10,000 h).
+- **M5:** charging at $0.10/kWh delivers **$0.117/kWh**, above the $0.08 target before capital. At $0.05 charging plus $0.027 capital/O&M it is ~$0.085; the threshold is **≤$0.043**. Mass is a double bind: **170 Wh/kg at 100% DoD**, **189 at 90%** with 5,475 cycles. M5 is electricity-price- and DoD-bound.
 
 M1’s cost target is achievable only with high utilisation (~1 mission/day). At one mission per week, capital alone is ~$0.96/kWh. Duty cycle belongs in the mission, not in the cost model’s fine print.
 
