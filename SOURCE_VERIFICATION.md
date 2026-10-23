@@ -29,6 +29,8 @@ The existing repository registry (`research/source_registry.csv`) is marked "abs
 | S15 | Deye, *SUN-29.9/30/35/40/50K-SG01HP3-EU-BM3/BM4* | https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/sun29-9-30-35-40-50ksg01hp3eubm3-4-29-950kw-three-phase-2-3-4-mppt-hybrid-inverter-hv-battery-supported-339.html | Verified 2026-10-23 | SUN-30K: 30 kW, 80 kg | 50/60 Hz hybrid inverter; distributor lists 60 kg |
 | S16 | Victron Energy, *MultiPlus-II inverter/charger* datasheet | https://www.victronenergy.com/upload/documents/Datasheet-MultiPlus-II-inverter-charger-EN-.pdf | Verified 2026-10-23 | 48/5000: 5 kVA, 19 kg | Low-frequency unit; heavier than high-frequency designs |
 | S17 | BatteryDesign.net, *Lucid Motors* teardown | https://www.batterydesign.net/lucid-motors/ | Verified 2026-10-23 (teardown, E1) | 118 kWh; 6,600 cells × 69.5 g = 458.7 kg → **257 Wh/kg cell-level**; pack mass not published | Not a datasheet; no pack-level figure claimed |
+| S18 | Alibaba, *10 kW Stirling Engine Guide* (2026-08-05) | https://electronics.alibaba.com/buyingguides/10-kw-stirling-engine-guide-real-world-use-selection | Accessed 2026-10-23 (E0, buying guide) | 10 kW Stirling: **$140,000–$185,000**, i.e. $14–18.5/W | Not a quote; price band only; use for a capex screen |
+| S19 | BlueDotMe, *How Many Hours Will a Kubota Diesel Engine Last?* | https://bluedotme.com/how-many-hours-will-a-kubota-diesel-engine-last/ | Accessed 2026-10-23 (E0, secondary) | Kubota diesel: 4,500–5,500 h average; >10,000 h with maintenance | Not a datasheet; supports the 5,000/10,000 h scenarios only |
 
 ---
 

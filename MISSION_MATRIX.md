@@ -61,7 +61,7 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 | M1 | 691 Wh/kg | 510 Wh/kg | 244 Wh/L | 0.16 kW battery; 3.5 kW diesel | 1,667 missions needed; 1/day feasible | **mass + volume + cost** |
 | M2 | 1,127 Wh/kg (battery) | 1,112 Wh/kg (battery) | 250 L (diesel) | ~1.5 kW diesel | diesel $722 capex, **$0.441/kWh** at 26.35% before engine; passes only if replacement ≤$295 (26.35%) or ≤$795 (35%) at 10,000 h | **engine life + fuel logistics + peak duration** |
 | M3 | 355 Wh/kg | 186 Wh/kg | 97 Wh/L | ~1.1 kW continuous | 2,222 missions needed; 3/day feasible | **converter + load type** |
-| M4 | n/a (generator) | n/a | n/a | 30 kW at 25%; 15 kW at 40% | $10k capex; radiator mass not priced | **heat rejection** |
+| M4 | n/a (generator) | n/a | n/a | 30 kW at 25%; 15 kW at 40% | 10 kW Stirling $140k–$185k = **$14–18.5/W**; target $1/W | **converter capex + 160,000 h life** |
 | M5 | 170 Wh/kg (100% DoD) | 163 Wh/kg (100% DoD) | 146 Wh/L | ~111 kW at 90% path | $0.144/kWh at $0.10 charging; needs ≤$0.043 | **DoD/cycle life + electricity price** |
 
 **Reading the table:** M1 cannot be closed by known storage or a realistic genset. M2 cannot be closed by storage but **can** by diesel (212 kg, $0.441/kWh at 26.35%) **if the engine replacement is cheap enough**, making it the conditional feasibility leader. M3 is conditional on a 166 Wh/kg pack and a DC/motor load. M5 is electricity-price-bound. M4 is a heat-rejection and heat-source problem.
@@ -77,7 +77,7 @@ These are arithmetic checks on the mission definitions, not technology claims.
 1. **M2’s capex/LCOE finding is corrected in §4.1.** The earlier “$50k/$0.50 inconsistent” assumed the full $50k was spent. It is a **ceiling**, not a required spend: a $722 diesel system is 212 kg and **$0.441/kWh** at 26.35%, passing all four numeric targets before engine replacement. The binding term is **engine life**, not capex.
 2. **M5’s LCOE target is below its charging cost, and its mass entry was wrong.** At $0.10/kWh grid charging, delivered charge alone is $0.117/kWh, before capital; the target is already exceeded. At $0.05/kWh charging plus $0.027/kWh capital and O&M, the result is ~$0.085/kWh; the threshold is **≤$0.043/kWh**. The earlier 256/242 Wh/kg pack requirement was inconsistent with 4 MWh / 25 t; the correct requirement is **170 Wh/kg at 100% DoD** (163 with a 0.5 t converter) and **189 Wh/kg at 90% DoD**, where 5,475 cycles also bind. M5 is electricity-price- and DoD-bound; no storage breakthrough fixes the charging price. See `M5_CLOSURE.md`.
 3. **M1’s cost target is duty-cycle-bound.** At one mission/day, capital is $0.137/kWh and fuel $0.10 → $0.237/kWh, under target. At one mission/week, capital alone is $0.96/kWh. The mission must declare a duty cycle; “10 years” alone is not enough.
-4. **M4’s “$1/W” excludes the heat source but not the radiator.** At 25% efficiency the radiator is ~30 m² and ~150 kg; at 40%, ~15 m² and ~75 kg. A $10,000 converter budget with an unpriced 150 kg radiator is not a system cost.
+4. **M4’s binding term is converter capex, not heat rejection.** At 25% the radiator is 26.25 m² and **78.8 kg** (repo formula, 3 kg/m²); at 40%, 13.1 m² and 39.4 kg. That is feasible. A commercial 10 kW Stirling is **$140,000–$185,000** (S18, E0), i.e. **$14–18.5/W** — 14–18× the $1/W target. The 160,000 h life is also unquoted. See `M4_CLOSURE.md`.
 
 These findings are **proposed corrections for owner review**. They do not change any physics result and do not select an architecture.
 

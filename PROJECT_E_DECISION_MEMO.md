@@ -33,7 +33,7 @@
 | M2’s **battery** route needs 1,112–1,127 Wh/kg pack; the **diesel** route is 212 kg and $0.441/kWh at 26.35% | `limits.py`; `MISSION_MATRIX.md` §4.1 | High (reconstruction) |
 | M2’s “$50k capex / $0.50 incompatible” finding was **wrong**: $50k is a ceiling, not a spend. A $722 diesel system passes; the binding term is **engine life** | `MISSION_MATRIX.md` §4.1; 8,760 h/y; replacement cost | High (arithmetic; engine life E1) |
 | M3 is the closest to conventional feasibility, **if the load is a motor/DC load** | PM100 7.5 kg at 100 kW → **166 Wh/kg pack at zero margin, 187 with 10 kg reserve**; a 30 kW 50 Hz inverter is 80 kg → ≥840 Wh/kg, impossible | High for mass; pack E1 |
-| M4 is heat-bound, not storage-bound | 30 kW waste at 25% → 30 m², ~150 kg radiator | High (conservation + heat transfer) |
+| M4’s binding term is **converter capex**, not heat rejection | 10 kW Stirling $140k–$185k = **$14–18.5/W** vs $1/W target; radiator 26 m², 79 kg at 25% | E0 price band; E1 heat |
 | B3 TPV is a converter, not a source; store is 484–806 kg | External ≥1500 °C heat; 0.06–0.10 kWh/kg usable | High (screening) |
 | C1 PEM is ~56 kg and fails H5 at $6/kg H₂ | Fuel alone $0.36/kWh; capex needs 12,500 missions | High |
 | C2 diesel is **50.3 kg screened** at 26.35%, **45.6 kg at 35%**; delivered fuel is **$0.405/kWh at 26.35%** ($0.305 at 35%) at the verified Delhi RSP of ₹95.20/L ($1.006/L) | PPAC 2026-10-21; `limits.py` §8, §10; `M1_CLOSURE.md` | High (price verified; mass from model) |
@@ -89,11 +89,11 @@ Ranked by expected information value and system leverage, not by excitement:
 |---:|---|---|---|
 | **1** | **M3: converter + pack closure** | Closest to conventional feasibility; a datasheet can flip 355 → 186 Wh/kg; 10 kWh/30 kW is a real market | Converter mass and heat are unmeasured |
 | **2** | **M2: source comparison (diesel / H₂ / nuclear)** | Largest system-level gap; source choice dominates by ~23× | Cost/regulatory; nuclear path unresolved |
-| **3** | **M4: heat rejection + SOFC/TPV/Stirling** | Stationary value; heat is the binding term; tests conversion physics | External heat source; radiator mass |
+| **3** | **M4: low-cost converter (Stirling/ORC/SOFC)** | Stationary value; radiator is feasible; the $1/W converter is the gap | Converter price; 160,000 h life; external heat price |
 | **4** | **M1: advanced storage (H1/H2)** | Highest ambition; closes or kills the benchmark | 2–4× gap; low probability |
 | **5** | **H8: negative control** | Protects the program from self-deception | Zero spend until a specific claim |
 
-**The strongest scientific opportunity is not a new battery chemistry.** It is the **source–conversion pair** for M2 and the **thermal closure** for M4. Storage is the most familiar bottleneck, not necessarily the most tractable one.
+**The strongest scientific opportunity is not a new battery chemistry.** It is the **source–conversion pair** for M2 and a **≤$1/W converter** for M4. Storage is the most familiar bottleneck, not necessarily the most tractable one.
 
 ### Q5. Which hypotheses have the highest expected information value per unit cost?
 
@@ -180,8 +180,8 @@ Nuclear work needs a licensed partner; this program must not attempt it. H₂ wo
 **Change direction** if:
 
 - M1 fails but M3 passes → shift to M3;
-- M2 diesel is mass-feasible but cost/heat-limited → shift to M4 or nuclear paper;
-- M4 heat rejection dominates → prioritise SOFC/ORC and external heat, not storage;
+- M2 diesel passes only with a ≤$295 (26.35%) or ≤$795 (35%) replacement → shift to a long-life engine or M4;
+- M4 converter capex dominates → prioritise a ≤$1/W Stirling/ORC/SOFC, not the radiator;
 - all storage routes fail → make the program a source/conversion program.
 
 **Stop** if:
@@ -205,7 +205,7 @@ Not a breakthrough: a 10–30% cell gain; a simulation; a patent; a single lab a
 
 1. Re-verify `e75be96` and the 57 tests; archive the output. **Done.**
 2. Record D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`); no mission change. **Done (N-30).**
-3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Pending.**
+3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Done:** M2’s capex cap was a ceiling, not a spend (`M2_CLOSURE.md`); M5’s pack requirement was wrong and its LCOE is charging-price-bound (`M5_CLOSURE.md`).
 4. Datasheets: 30 kW converter **done** (PM100 7.5 kg; Deye 80 kg). Still needed: a 6 kW inverter and a 10 kWh pack at ≥166 Wh/kg pack-level.
 5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 still pending.
 6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
@@ -278,7 +278,7 @@ Until one of these arrives, the memo stands.
 | 5 | Bottleneck map | `BOTTLENECK_MAP.md` | new; screening |
 | 6 | Mechanism register | `MECHANISM_REGISTER.md` | draft; 20 mechanisms |
 | 7 | Hypothesis register | `HYPOTHESIS_REGISTER.md` + `.csv` | 11 hypotheses; E1 max |
-| 8 | Mission matrix | `MISSION_MATRIX.md` | M1–M5; M2/M5 targets inconsistent |
+| 8 | Mission matrix | `MISSION_MATRIX.md` | M1–M5 closure docs; M2 conditional, M4 capex-bound, M5 price-bound |
 | 9 | Computational research plan | `COMPUTATIONAL_RESEARCH_PLAN.md` | draft |
 | 10 | Experiment strategy | `EXPERIMENT_STRATEGY.md` | draft; no experiment authorised |
 | 11 | Safety and risk register | `SAFETY_AND_RISK_REGISTER.md` | draft |

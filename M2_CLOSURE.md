@@ -44,7 +44,7 @@ The genset runs 720 h per mission × 12.17 missions/year = **8,760 h/year**;
 **87,600 h** over 10 years. A small diesel at this duty is replaced several times.
 
 The model's $232 replacement is the genset share of capex ($400/kW × 0.58 kW).
-A real 1 kW diesel genset costs $500–$1,500, so this is optimistic.
+A real 1 kW diesel genset costs $500–$1,500, so this is optimistic. Secondary sources put a Kubota diesel at **4,500–5,500 h average, >10,000 h with maintenance** (S19, E0); the 5,000/10,000 h scenarios are the relevant range, and neither is a guarantee.
 
 LCOE with engine replacement (10,000 h life unless stated):
 
