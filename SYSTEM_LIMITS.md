@@ -262,11 +262,11 @@ Best credible values are E1 planning ranges; no datasheet is archived.
 | M1 | 691 Wh/kg | 510 Wh/kg | 150–250 Wh/kg | 2.0–4.6× | **yes** |
 | M2 | 1,127 Wh/kg | 1,112 Wh/kg | 150–250 Wh/kg | 4.4–7.5× | **yes; battery impossible** |
 | M3 | 355 Wh/kg | 186 Wh/kg | 150–250 Wh/kg | 0.7–2.4× | **conditional on converter mass** |
-| M5 | 256 Wh/kg | 242 Wh/kg | 150–250 Wh/kg | 1.0–1.7× | marginal; premium cells only |
+| M5 | 170 Wh/kg | 163 Wh/kg | 150–250 Wh/kg | 0.7–1.1×; 90% DoD needs 189 | **DoD/cycle life** |
 
 Cell-level equivalents are 1.25× the pack values. The M1 gap is ~2.1–3.5× at cell level (638–864 vs 250–300 Wh/kg).
 
-**The honest conclusion:** M1 and M2 are not closed by known storage. M3 and M5 are close enough that a measured converter/pack could change the verdict. That is where a paper-and-datasheet program can still produce a decision.
+**The honest conclusion:** M1 and M2 are not closed by known storage (M2 can be closed by diesel). M3 and M5 are close enough that a measured converter/pack could change the verdict. That is where a paper-and-datasheet program can still produce a decision.
 
 ---
 
