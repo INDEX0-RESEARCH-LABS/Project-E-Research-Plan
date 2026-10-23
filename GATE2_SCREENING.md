@@ -92,7 +92,7 @@ supercap buffer 0.05 kWh                 8.3  8.3 kg at 6 Wh/kg; fails H7 <=5 kg
 | A1 with 300 Wh/kg | 74.8 kg | Fail | cells 48.7 kg | H1's ≥250 Wh/kg pack milestone is a component gate, not an M1 pass; M1 needs 510–691 Wh/kg pack |
 | A1 with 500 Wh/kg | 50.4 kg | Fail | cells 29.2 kg | still above 35 kg before margin |
 | A1 with 870 Wh/kg (cell-level; ~696 pack) | 34.9 kg | Barely | no demonstrated pack at this level | **Not a candidate; a sensitivity** |
-| C2 diesel hybrid | 49.3 kg | Fail | genset + converter + fuel | Fails M1 mass and $0.40/kWh at $1.40/L; H5 (fuel cell) not applicable |
+| C2 diesel hybrid | **50.3 kg screened** | Fail | genset + converter + fuel | Mass fails. Cost: $0.385/kWh at 26.35%, or **$0.369** at 35% with $2,000 capex and 250 missions/y — **cost passes, mass does not** |
 | C1 PEM + 5 wt% H2 | 56.0 kg | Fail | tank + stack + converter | **Fails H5 at $6/kg H2** (> $4/kg); park unless H2 price falls |
 | Supercapacitor 0.05 kWh buffer | 8.3 kg | Buffer only; not a full M1 candidate | 6 Wh/kg | **Fails H7** (>5 kg); A2 buffer is not viable as stated |
 
@@ -100,7 +100,7 @@ The supercapacitor row is buffer-only: its charging source is the parent system,
 
 ### Diesel fuel target
 
-At the repo's $1.40/L, C2 uses ~4.02 L per 10 kWh mission, or ~$5.63 of fuel, i.e. **~$0.56/kWh before capex**. At the verified Delhi RSP of ₹95.20/L (PPAC, 2026-10-21; $1.006/L), the same fuel costs ~$4.05, or **$0.385/kWh**; the target then fails on capex, not fuel. The M1 target is $0.40/kWh; this is a negative result, not a rounding issue.
+At the verified Delhi RSP of ₹95.20/L (PPAC, 2026-10-21; $1.006/L), C2's 4.02 L costs ~$4.05, or **$0.385/kWh at 26.35%**. At 35%, fuel is **$0.289/kWh**; with $2,000 capex and 250 missions/y the total is **$0.369/kWh (passes)**, and at $5,000 it is **$0.489 (fails)**. The target is **capex- and efficiency-bound, not fuel-bound**. The repo's $1.40/L was 39% high. Mass still fails: see `M1_CLOSURE.md`.
 
 ---
 
@@ -171,10 +171,11 @@ Range ≈ **110–144 kg** from declared input ranges alone. The 35 kg target is
 1. The repository's A1 result is reproducible at the dominant-term level under its stated 175 Wh/kg basis and 1.25 packaging: ~118 kg.
 2. The M1 35 kg target requires roughly **690–700 Wh/kg pack-level or ~865–870 Wh/kg cell-level** at 1.5 kg/kW and 10 kWh, with no margin, cooling, or 10-year degradation. The band is **510–691 Wh/kg pack** over 0.5–1.5 kg/kW. No such pack is demonstrated or purchasable as a system.
 3. Under the repository's 300 W/kg **continuous** pack rating, A1's floor is ~40 kg at 0.5 h and ~118 kg at 8 h. The 8 h M1 mission cannot reach 35 kg; this is a model assumption, not a universal physical limit. A pulse-rated sensitivity (600–1,000 W/kg for 30 s) is required before treating the floor as universal.
-4. C2 diesel is ~49–50 kg and fuel-limited above $0.40/kWh at $1.40/L.
+4. C2 diesel is **50.3 kg screened** at 26.35% and **45.6 kg at 35%**. The 35 kg target is not closed: the best case is 35.0 kg only with a 12 kg/kW genset, forced convection, 1.10 packaging, and a tank; at 15–20 kg/kW it is 38.8–46.8 kg (`M1_CLOSURE.md`).
 5. C1 PEM is ~56 kg and fails H5 at $6/kg H2; it is a benchmark row, not a viable M1 candidate at current price.
 6. B3 TPV store is 484–806 kg before emitter/cells/radiator and fails H4 (<1 kWh/kg).
 7. Solar and fission are not M1 candidates; they belong to M2/M4 with a different boundary.
+8. **M3 is conditional, not passed:** 166 Wh/kg pack at zero margin with a 7.5 kg PM100; 187 Wh/kg with a 10 kg reserve; a 50 Hz AC load (80 kg inverter) fails outright (`M3_CLOSURE.md`).
 
 ---
 
