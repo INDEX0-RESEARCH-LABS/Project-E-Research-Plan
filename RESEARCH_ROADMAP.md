@@ -267,14 +267,14 @@ A stop is a result, not a failure. The negative record is preserved.
 ## 14. First seven days (no spend)
 
 1. Freeze and re-verify the Project-E commit and test count (already `e75be96`, 57 tests).
-2. Close D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`).
-3. Repair or explicitly accept the M2 and M5 target inconsistencies.
-4. Obtain three datasheets: a 6 kW inverter, a 30 kW inverter, and a 10 kWh LFP/NMC pack. Record them in `SOURCE_VERIFICATION.md`.
-5. Add page/figure locators for S01, S04, N01, N02, N08.
-6. Run `screening.py` and `limits.py`; archive the outputs.
-7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package for desk review.
-8. Decide whether M3 or M2 is the first Gate 3 target; do not start both.
-9. No purchase, no experiment, no repository edit to Project-E, no commit or push.
+2. Close D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`). **Done.**
+3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Pending.**
+4. Datasheets: 30 kW converter **done** (PM100 7.5 kg, Deye 80 kg). Still needed: a 6 kW inverter and a 10 kWh pack at ≥166 Wh/kg pack-level. Record in `SOURCE_VERIFICATION.md`.
+5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 pending.
+6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
+7. Identify two independent reviewers (thermal; electrochemistry) and send the Gate 2 package for desk review. **Pending.**
+8. **M3 is the provisional first Gate 3 target, conditional on a DC/motor load.** M1 is not a Gate 3 target at 35 kg (`M1_CLOSURE.md`). Do not start both.
+9. **Project-E frozen at `e75be96`; commits and pushes to this plan are authorised.** No purchase, no experiment, no hardware spend.
 
 ---
 
