@@ -52,6 +52,20 @@ The Gate 2 screen left one decision-critical unknown: converter specific mass. `
 
 **Source:** PPAC, *Archive — Important News*, https://ppac.gov.in/archives/impnews (accessed 2026-10-23).
 
+### C-04 — Lucid Air cell-level energy density (teardown, E1)
+
+| Item | Value | Source |
+|---|---|---|
+| Pack energy | 118 kWh (Dream Edition) | BatteryDesign teardown |
+| Cell count / mass | 6,600 cells × 69.5 g = **458.7 kg** | same |
+| Cell-level specific energy | **257 Wh/kg** (118,000 / 458.7) | calculated |
+| Pack mass | not published | — |
+| Pack at 65% cell-to-pack | **167 Wh/kg** | calculated |
+
+**Source:** BatteryDesign.net, *Lucid Motors*, https://www.batterydesign.net/lucid-motors/ (updated 2026-10-08; accessed 2026-10-23). This is a teardown analysis, **E1**, not a manufacturer datasheet. The pack mass is not published, so no pack-level figure is claimed.
+
+**What it means:** M3's **166 Wh/kg pack is 65% of a 257 Wh/kg state-of-the-art 21700 cell**. A 65% cell-to-pack ratio is normal for a liquid-cooled EV pack, so M3's pack is **achievable with current cells**, not exotic. The problem is the zero mass margin, not the chemistry.
+
 ---
 
 ## 3. What this does to M3
@@ -68,8 +82,9 @@ Nameplate at the plan's chain (0.95 converter, 0.80 DoD, 0.90 round-trip) is **1
 **Findings**
 
 1. **M3's verdict depends on the load type, not on a new technology.** For a motor or DC load, a 7.5 kg PM100-class inverter leaves 88 kg for the pack, so **166 Wh/kg pack** is enough. That is at the edge of current EV packs (150–170 Wh/kg, E1) but not beyond them.
-2. **For a 50 Hz AC load, the same mission fails outright.** An 80 kg hybrid inverter consumes the entire 100 kg budget before the pack. No pack chemistry fixes that.
-3. **Therefore the first M3 action is a one-line mission decision:** is the 30 kW load a motor/DC load or a 50 Hz AC load? Until that is fixed, the M3 pass/fail is undefined.
+2. **The pack is not exotic.** 166 Wh/kg is 65% of a 257 Wh/kg 21700 cell (C-04), a normal cell-to-pack ratio. The remaining risk is the zero margin, not the cell chemistry.
+3. **For a 50 Hz AC load, the same mission fails outright.** An 80 kg hybrid inverter consumes the entire 100 kg budget before the pack. No pack chemistry fixes that.
+4. **Therefore the first M3 action is a one-line mission decision:** is the 30 kW load a motor/DC load or a 50 Hz AC load? Until that is fixed, the M3 pass/fail is undefined.
 
 ---
 

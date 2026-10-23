@@ -37,7 +37,7 @@ Packaging 1.25 on the converter; BOP rule \(2 + 0.06E\) = 2.6 kg.
 | 10 kg (10%) | 78.0 kg | **187 Wh/kg** |
 | 20 kg | 68.0 kg | **215 Wh/kg** |
 
-**Interpretation.** 166 Wh/kg is at the top of current EV packs (150–170 Wh/kg, E1) and leaves **zero** margin for mounts, busbars, seal, and tolerance. A normal 10% margin needs **187 Wh/kg**, which is above current production packs and into announced/premium territory. M3 is therefore a **knife-edge**, not a comfortable conventional pass.
+**Interpretation.** 166 Wh/kg is **65% of a 257 Wh/kg state-of-the-art 21700 cell** (C-04: 118 kWh / 458.7 kg cells, Lucid Air teardown). A 65% cell-to-pack ratio is normal for a liquid-cooled EV pack, so the pack is achievable with **current cells**, not exotic chemistry. But it leaves **zero** margin for mounts, busbars, seal, and tolerance. A normal 10% margin needs **187 Wh/kg** (73% cell-to-pack), which is beyond current production packs. M3 is therefore a **knife-edge**: the chemistry is available, the packaging margin is not.
 
 ---
 
@@ -88,10 +88,10 @@ A Deye SUN-30K 50 Hz hybrid inverter is **80 kg**. With 1.25 packaging it is 100
 To close M3, three things are required:
 
 1. **Owner declares the load**: DC/motor or 50 Hz AC.
-2. **One pack datasheet at ≥166 Wh/kg pack-level**, with mass, volume, cycle life, and price. EV teardown figures are not enough.
+2. **One pack datasheet at ≥166 Wh/kg pack-level**, with mass, volume, cycle life, and price. Teardown figures (C-04) set the cell anchor, not the pack claim.
 3. **A margin decision**: zero margin (166 Wh/kg, top-tier current pack) or 10% margin (187 Wh/kg, next-generation pack). If 10%, either accept a ~110 kg envelope or defer M3 to a 2028+ pack.
 
-**Do not claim M3 passes today.** The honest statement is: *M3 is the closest mission; it is feasible on paper only with a top-tier pack and no mass margin, and it becomes impossible if the load is 50 Hz AC.*
+**Do not claim M3 passes today.** The honest statement is: *M3 is the closest mission; it is feasible on paper with current 21700-class cells and no mass margin, and it becomes impossible if the load is 50 Hz AC.*
 
 ---
 

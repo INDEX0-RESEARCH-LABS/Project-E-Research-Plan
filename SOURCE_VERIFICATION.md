@@ -28,6 +28,7 @@ The existing repository registry (`research/source_registry.csv`) is marked "abs
 | S14 | Cascadia Motion, *PM100 Propulsion Inverter* spec sheet | https://stealthev.com/wp-content/uploads/2019/06/PM100-Spec-Sheet.pdf | Verified 2026-10-23 | 100 kW peak (10 s), 7.5 kg, 5.5 L, liquid-cooled | Motor inverter, not 50 Hz AC; efficiency not stated; distributor-hosted PDF |
 | S15 | Deye, *SUN-29.9/30/35/40/50K-SG01HP3-EU-BM3/BM4* | https://www.deyeinverter.com/product/three-phase-high-voltage-hybrid-inverter/sun29-9-30-35-40-50ksg01hp3eubm3-4-29-950kw-three-phase-2-3-4-mppt-hybrid-inverter-hv-battery-supported-339.html | Verified 2026-10-23 | SUN-30K: 30 kW, 80 kg | 50/60 Hz hybrid inverter; distributor lists 60 kg |
 | S16 | Victron Energy, *MultiPlus-II inverter/charger* datasheet | https://www.victronenergy.com/upload/documents/Datasheet-MultiPlus-II-inverter-charger-EN-.pdf | Verified 2026-10-23 | 48/5000: 5 kVA, 19 kg | Low-frequency unit; heavier than high-frequency designs |
+| S17 | BatteryDesign.net, *Lucid Motors* teardown | https://www.batterydesign.net/lucid-motors/ | Verified 2026-10-23 (teardown, E1) | 118 kWh; 6,600 cells × 69.5 g = 458.7 kg → **257 Wh/kg cell-level**; pack mass not published | Not a datasheet; no pack-level figure claimed |
 
 ---
 
