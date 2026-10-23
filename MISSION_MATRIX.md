@@ -85,7 +85,7 @@ These findings are **proposed corrections for owner review**. They do not change
 
 The earlier finding treated the **$50,000 capex cap** as if it were the system’s cost. A diesel C2 does not spend it.
 
-Reconstruction from the repo’s C2 formulas (360 kWh, 720 h, 5 kW peak, 0.58 kW genset, 0.3 kWh buffer):
+Repo C2 model at dt = 60 s (360 kWh, 720 h, 5 kW peak, 0.58 kW genset, 0.3 kWh buffer): **211.8 kg, $721.58, 144.71 L, 25.03% delivered**.
 
 | Case | Fuel | Mass | Capex | Capital | Fuel | O&M | Total |
 |---|---:|---:|---:|---:|---:|---:|---:|

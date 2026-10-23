@@ -2,8 +2,9 @@
 
 Status: **conditional pass at the screening boundary**, not a deployable design.
 Date: 2026-10-23. All costs are per **delivered** kWh and include the 0.95 converter.
-Evidence level: E1 (arithmetic reconstruction of the repo's C2 model), except engine
-life/replacement, which is E1 with no supplier quote.
+Evidence level: E1 (repo C2 model at dt = 60 s, run 2026-10-23: 211.8 kg, $721.58,
+144.71 L, 25.03% delivered efficiency), except engine life/replacement, which is E1
+with no supplier quote.
 
 ## 1. Mission and boundary
 
@@ -24,7 +25,9 @@ pass them.
 
 ## 2. Baseline reconstruction (C2 diesel hybrid)
 
-Sizing: 0.58 kW genset, 0.3 kWh buffer, 5 kW converter, 144.7 L fuel.
+Repo model at dt = 60 s: 211.8 kg, $721.58 capex, 144.71 L fuel, 25.03% delivered
+efficiency. Sizing: 0.58 kW genset, 0.3 kWh buffer, 5 kW converter. The 26.35%
+figure is generator-only; 26.35% × 0.95 = 25.03% delivered.
 
 | Case | Fuel | Mass | Capex | Capital | Fuel | O&M | Total before engine |
 |---|---:|---:|---:|---:|---:|---:|---:|
