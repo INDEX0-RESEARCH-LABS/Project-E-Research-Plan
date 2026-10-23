@@ -220,6 +220,30 @@ def report_cost():
         print()
 
 
+def m3_pack_required(converter_kg: float, margin_kg: float = 0.0):
+    """M3 pack specific energy for an absolute converter mass and mass margin."""
+    m = MISSIONS[2]
+    avail = m.mass_kg - converter_kg * PACK - bop_mass(m) - margin_kg
+    if avail <= 0:
+        return float("inf"), avail
+    return nameplate_kwh(m) * 1000.0 / avail, avail
+
+
+def report_m3_closure():
+    hdr("9. M3 closure: converter, pack, margin, heat, volume")
+    m = MISSIONS[2]
+    print(f"  nameplate {nameplate_kwh(m):.2f} kWh; envelope {m.mass_kg:.0f} kg / {m.volume_l:.0f} L")
+    for label, conv in (("PM100 7.5 kg", 7.5), ("assumed 15 kg", 15.0), ("Deye 80 kg", 80.0)):
+        for margin in (0.0, 10.0):
+            pack, avail = m3_pack_required(conv, margin)
+            print(f"  {label:14s} margin {margin:2.0f} kg: avail {avail:6.1f} kg -> pack {pack:6.1f} Wh/kg")
+    area = enclosure_area_m2(m.volume_l)
+    print(f"  enclosure area {area:.2f} m2; 1.0 kW loss -> dT {1000/(50*area):.1f} K")
+    print(f"  pulse 30 kW/10 s, 5% loss = {0.05*30*10:.1f} kJ; 88 kg pack at 1 kJ/kgK -> "
+          f"{0.05*30*10/(88*1.0):.2f} K")
+    print(f"  pack volume at 300 Wh/L: {nameplate_kwh(m)/0.300:.1f} L of {m.volume_l:.0f} L")
+
+
 def report_diesel_sensitivity():
     hdr("8. Diesel cost: verified Delhi price, efficiency, capex, duty")
     price = DIESEL_USD_PER_L_VERIFIED
@@ -255,5 +279,6 @@ if __name__ == "__main__":
     report_heat()
     report_conversion()
     report_cost()
-    report_diesel_sensitivity()
     report_sources()
+    report_diesel_sensitivity()
+    report_m3_closure()

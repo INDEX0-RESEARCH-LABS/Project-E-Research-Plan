@@ -66,7 +66,7 @@ All values are E1/A; see `SYSTEM_LIMITS.md` for the equations and `limits.py` fo
 
 **Reading the table:** M1 and M2 cannot be closed by known storage. M3 and M5 are close enough that a measured converter or pack could change the verdict. M4 is not a storage problem at all; it is a heat-rejection and heat-source problem.
 
-**M3 measured-converter update (2026-10-23):** a Cascadia PM100 traction inverter is **7.5 kg at 100 kW** (0.25 kg/kW at 30 kW), which leaves 88 kg for the pack and requires only **166 Wh/kg pack** — at the edge of current EV packs. A Deye 30 kW 50 Hz hybrid inverter is **80 kg**, which consumes the 100 kg budget before the pack and requires **≥840 Wh/kg**. M3 therefore passes or fails on **one definition: motor/DC load vs 50 Hz AC load**. See `COMPONENT_EVIDENCE.md`.
+**M3 measured-converter update (2026-10-23):** a Cascadia PM100 traction inverter is **7.5 kg at 100 kW** (0.25 kg/kW at 30 kW), which leaves 88 kg for the pack and requires only **166 Wh/kg pack** — at the edge of current EV packs. A Deye 30 kW 50 Hz hybrid inverter is **80 kg**, which consumes the 100 kg budget before the pack and requires **≥840 Wh/kg**. M3 therefore passes or fails on **one definition: motor/DC load vs 50 Hz AC load**. At zero mass margin; a 10 kg (10%) reserve raises the requirement to **187 Wh/kg**. See `M3_CLOSURE.md` and `COMPONENT_EVIDENCE.md`.
 
 ---
 

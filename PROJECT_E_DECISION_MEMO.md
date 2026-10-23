@@ -32,7 +32,7 @@
 | M1’s 690 Wh/kg headline is **conditional**, not a physical law | Converter 1.5 kg/kW is an assumption | High |
 | M2 is source-bound: battery needs 1,112–1,127 Wh/kg pack; diesel is ~165 kg | `limits.py`; diesel 3.6 kWh/kg fuel at 30% | High (screening) |
 | M2’s $50k capex / $0.50 per kWh targets are mutually inconsistent | $50k over 122 missions × 360 kWh = $1.14/kWh capital | High (arithmetic) |
-| M3 is the closest to conventional feasibility, **if the load is a motor/DC load** | PM100 7.5 kg at 100 kW → 166 Wh/kg pack; a 30 kW 50 Hz inverter is 80 kg → ≥840 Wh/kg, impossible | High for mass; pack E1 |
+| M3 is the closest to conventional feasibility, **if the load is a motor/DC load** | PM100 7.5 kg at 100 kW → **166 Wh/kg pack at zero margin, 187 with 10 kg reserve**; a 30 kW 50 Hz inverter is 80 kg → ≥840 Wh/kg, impossible | High for mass; pack E1 |
 | M4 is heat-bound, not storage-bound | 30 kW waste at 25% → 30 m², ~150 kg radiator | High (conservation + heat transfer) |
 | B3 TPV is a converter, not a source; store is 484–806 kg | External ≥1500 °C heat; 0.06–0.10 kWh/kg usable | High (screening) |
 | C1 PEM is ~56 kg and fails H5 at $6/kg H₂ | Fuel alone $0.36/kWh; capex needs 12,500 missions | High |
@@ -282,7 +282,7 @@ Until one of these arrives, the memo stands.
 | 14 | Independent review plan | `INDEPENDENT_REVIEW_PLAN.md` | new; no reviewer engaged |
 | 15 | Decision memo | `PROJECT_E_DECISION_MEMO.md` | this document |
 
-**Annexes:** `GATE2_SCREENING.md`, `screening.py`, `limits.py`, `SOURCE_VERIFICATION.md`, `NEGATIVE_RESULTS.md`, `COMPONENT_EVIDENCE.md`, `PROJECT_E_PRE_EXECUTION_PLAN.md`.
+**Annexes:** `GATE2_SCREENING.md`, `M3_CLOSURE.md`, `COMPONENT_EVIDENCE.md`, `screening.py`, `limits.py`, `SOURCE_VERIFICATION.md`, `NEGATIVE_RESULTS.md`, `PROJECT_E_PRE_EXECUTION_PLAN.md`.
 
 All 15 required files exist. None is approved. Gate 2 is not passed.
 
