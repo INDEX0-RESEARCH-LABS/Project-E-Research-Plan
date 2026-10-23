@@ -122,7 +122,7 @@ A supplier-grade converter mass is therefore a Gate 3 priority, not a detail.
 - **TEG:** the standard expression gives 23.2% of Carnot at \(ZT=1\), i.e. **14.5% ideal** at 800 K; contacts and heat exchangers put practical systems at 5–8% (S02, S07; E1).
 - **Fuel cell:** \(\Delta G/\Delta H = 237.1/285.8 = 83.0\%\) at 25 °C is the thermodynamic ceiling; practical system efficiency is 45–60% LHV (S11, N03; E1).
 - **TPV:** 40% cell efficiency at 1900–2400 °C is verified at cell level (S01); the system value used here is \(0.32 \times 0.85 \times 0.95 = 25.8\%\) before insulation and pumping.
-- **Solar:** the single-junction detailed-balance limit is 33.7% at one sun (S05); commercial modules are just under 25% in 2026 (N10); system efficiency is lower.
+- **Solar:** the single-junction detailed-balance limit is ~30% at 1.1 eV in the original 1961 blackbody calculation (S05); the commonly quoted 33.7% is a later AM1.5 recalculation; commercial modules are just under 25% in 2026 (N10); system efficiency is lower.
 
 No architecture in this program may claim a conversion efficiency above Carnot. A claim above the relevant material/device ceiling requires a measured device and an independent replication, not a model.
 

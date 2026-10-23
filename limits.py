@@ -229,6 +229,49 @@ def m3_pack_required(converter_kg: float, margin_kg: float = 0.0):
     return nameplate_kwh(m) * 1000.0 / avail, avail
 
 
+def m1_breakdown(eta=0.2635, source_kg_kw=12.0, h=10.0, packaging=1.25,
+                 converter_kg=9.0, tank_kg=0.0):
+    """Reconstruct the C2 diesel mass from first principles (repo-consistent)."""
+    E, hours, conv = 10.0, 8.0, 0.95
+    avg_dc = E / hours / conv
+    src = avg_dc * 1.10
+    fuel_kwh = E / (eta * conv)
+    litres = fuel_kwh / 9.94
+    src_m = src * source_kg_kw
+    buf_m = 0.300 * 1000.0 / 175.0
+    fuel_m = litres * 0.83 * 1.25
+    subtotal = (src_m + buf_m + fuel_m) * packaging
+    waste_kw = (fuel_kwh - E) / hours
+    area = waste_kw * 1000.0 * 0.35 / (h * 40.0)
+    rad_m = area * 3.0
+    conv_m = converter_kg * packaging
+    return dict(src=src, litres=litres, src_m=src_m, buf_m=buf_m, fuel_m=fuel_m,
+                subtotal=subtotal, area=area, rad_m=rad_m, conv_m=conv_m,
+                total=subtotal + rad_m + conv_m + tank_kg)
+
+
+def report_m1_closure():
+    hdr("10. M1 closure: C2 diesel mass, 35% case, BOP ladder")
+    b = m1_breakdown()
+    print(f"  baseline eta 26.35%: {b['litres']:.2f} L; source {b['src_m']:.1f} + "
+          f"buffer {b['buf_m']:.2f} + fuel {b['fuel_m']:.2f} = {b['subtotal']:.2f} kg packaged")
+    print(f"  radiator {b['rad_m']:.2f} kg ({b['area']:.2f} m2) + converter {b['conv_m']:.2f} kg "
+          f"-> total {b['total']:.2f} kg")
+    b35 = m1_breakdown(eta=0.35)
+    print(f"  35% case: {b35['litres']:.2f} L; total {b35['total']:.2f} kg")
+    ladder = [
+        ("35% + PM100 (7.5 kg)", dict(eta=0.35, converter_kg=7.5)),
+        ("  + forced convection h=50", dict(eta=0.35, converter_kg=7.5, h=50.0)),
+        ("  + packaging 1.10", dict(eta=0.35, converter_kg=7.5, h=50.0, packaging=1.10)),
+        ("  + 1 kg tank", dict(eta=0.35, converter_kg=7.5, h=50.0, packaging=1.10, tank_kg=1.0)),
+    ]
+    for label, kw in ladder:
+        print(f"  {label:30s} {m1_breakdown(**kw)['total']:.2f} kg")
+    for sk in (12.0, 15.0, 20.0):
+        print(f"  source {sk:.0f} kg/kW, 35%, PM100, forced, 1.10: "
+              f"{m1_breakdown(eta=0.35, source_kg_kw=sk, h=50.0, packaging=1.10, converter_kg=7.5)['total']:.2f} kg")
+
+
 def report_m3_closure():
     hdr("9. M3 closure: converter, pack, margin, heat, volume")
     m = MISSIONS[2]
@@ -282,3 +325,4 @@ if __name__ == "__main__":
     report_sources()
     report_diesel_sensitivity()
     report_m3_closure()
+    report_m1_closure()

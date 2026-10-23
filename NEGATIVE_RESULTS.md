@@ -54,7 +54,9 @@
 | N-28 | M5's LCOE target is below its charging cost | M5; grid charging | $0.10/kWh charging > $0.08/kWh target; at $0.05 charging + $0.03 capital = ~$0.086 | Cheaper charging or a higher LCOE target |
 | N-29 | The pulse buffer does not pay for itself at current components | M1/M3 pulse | Supercap 0.05 kWh at 6 Wh/kg = 8.3 kg; converter saving 8.9 kg; net ~0.6 kg | A supercap ≥13 Wh/kg or a smaller pulse energy |
 | N-30 | The reported “8 vs 10 kWh” mission inconsistency was a misread | M1 mission definition | 6 kW pulses add 5 kW × 30/600 × 8 h = 2 kWh; 8 + 2 = 10 kWh, 1.25 kW average. D16 withdrawn; 510–691 Wh/kg band unchanged | None; arithmetic closed |
-| N-31 | The repo's $1.40/L diesel price is 39% above the verified Delhi RSP | M1/C2 cost | PPAC: ₹95.20/L on 2026-10-21 = $1.006/L at ₹94.593871/USD. Fuel at 26.3% is $0.385/kWh, not $0.536; total with $5,000/25,000 kWh capex is $0.585, so the $0.40 target is capex- and duty-cycle-bound | A capex/duty-cycle test; not a fuel-price claim |
+| N-31 | The repo's $1.40/L diesel price is 39% above the verified Delhi RSP | M1/C2 cost | PPAC: ₹95.20/L on 2026-10-21 = $1.006/L at ₹94.593871/USD. Fuel at 26.3% is $0.385/kWh, not $0.536; total at 26.3% with $5,000/25,000 kWh capex is $0.585. At 35% it is $0.289 fuel + $0.08/$0.20 capex = $0.369/$0.489 | A capex/duty-cycle test; not a fuel-price claim |
+| N-32 | M1's 35 kg target is not closed by a diesel genset | M1 closure | Screened C2 is 50.3 kg at 26.35%; 45.6 kg at 35%. The best case (12 kg/kW genset, PM100, forced convection, 1.10 packaging, 1 kg tank) is 35.0 kg with zero margin; at 15–20 kg/kW it is 38.8–46.8 kg | A 1.5 kW genset datasheet at ≤12 kg/kW, or an approved 45 kg target |
+| N-33 | The 33.7% figure attributed to Shockley–Queisser is not in the 1961 abstract | Citation accuracy | The original abstract reports a maximum of **30% at 1.1 eV** for a 6000 K blackbody; 33.7% is a later AM1.5 recalculation. The conclusion (a ~30–34% single-junction ceiling) is unchanged | Page-level check of the 1961 paper and the source of the 33.7% value |
 
 
 ---
