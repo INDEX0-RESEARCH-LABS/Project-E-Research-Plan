@@ -346,11 +346,11 @@ A 2× improvement in a cell is not a 2× improvement in a system. The claim must
 This document is accepted when:
 
 - [ ] every candidate uses the same M1–M5 definitions;
-- [ ] the M1 1 kW vs 1.25 kW inconsistency is resolved;
-- [ ] M2 and M5 target inconsistencies are resolved or explicitly accepted;
+- [x] the M1 1 kW vs 1.25 kW inconsistency is resolved (§2.1; D16 withdrawn);
+- [x] M2 and M5 target inconsistencies are resolved or explicitly accepted (`M2_CLOSURE.md`, `M5_CLOSURE.md`);
 - [ ] mass, volume, heat, and cost build-ups are explicit;
 - [ ] every E2 value has a source locator;
 - [ ] the scorecard is applied after hard pass/fail;
 - [ ] an independent reviewer has checked the units and at least three calculations.
 
-**Current status:** not accepted. The mission definitions are provisional; the target inconsistencies above are open.
+**Current status:** not accepted. The mission and target items above are resolved; independent review, E2 datasheets, and the M3 load definition remain open.

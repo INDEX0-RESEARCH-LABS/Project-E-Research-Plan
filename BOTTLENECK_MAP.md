@@ -162,9 +162,9 @@ Each of these is a measurement, not an opinion. The map is designed to be revise
 ## 8. Bottom line
 
 - **M1 is storage-, volume-, and cost-bound simultaneously.** No known component closes it; the gap is 2–4×, not 10%.
-- **M2 is source-bound.** Batteries are impossible; diesel is mass-feasible but cost/heat/emission-limited; nuclear is mass-plausible but regulation-bound.
+- **M2 is mass-feasible with diesel; its binding term is engine life/replacement.** Batteries are impossible; diesel is 212 kg and $0.441/kWh at 26.35%, passing only with a ≤$295 replacement (or ≤$795 at 35%); fuel logistics, emissions, and cold start are unmodelled; nuclear is regulation-bound.
 - **M3 is converter- and heat-bound.** It is the closest to conventional feasibility and the most sensitive to a missing datasheet.
-- **M4 is heat-bound.** The external heat source is not free; 30 kW of waste heat is a 15–30 m² radiator.
-- **M5 is cost-bound.** The technology exists; the electricity price and duty cycle decide it.
+- **M4 is converter-capex-bound.** The radiator is 13–26 m² and 39–79 kg; a commercial 10 kW Stirling is $14–18.5/W against a $1/W target. The external heat price is also undeclared.
+- **M5 is electricity-price- and DoD-bound.** 170 Wh/kg at 100% DoD (189 at 90%); 5,475 cycles; $0.144/kWh at $0.10 charging, needing ≤$0.043. The technology exists; the power price decides it.
 
 The highest-leverage scientific question is not “which battery is best?” It is: **is there a source-and-conversion pair that reaches >1 kWh/kg system at the mission’s power scale without a regulatory or thermal penalty?** Only nuclear and chemical fuels answer yes today. The program’s job is to establish whether either can be made compact, safe, and lawful — or to prove that neither can.

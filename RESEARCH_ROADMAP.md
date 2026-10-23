@@ -268,7 +268,7 @@ A stop is a result, not a failure. The negative record is preserved.
 
 1. Freeze and re-verify the Project-E commit and test count (already `e75be96`, 57 tests).
 2. Close D16 as withdrawn: 10 kWh = 8 kWh base + 2 kWh pulses (`dispatch.py`). **Done.**
-3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Pending.**
+3. Repair or explicitly accept the M2 and M5 target inconsistencies. **Done:** M2’s capex cap was a ceiling (`M2_CLOSURE.md`); M5’s pack requirement was wrong and its LCOE is charging-price-bound (`M5_CLOSURE.md`).
 4. Datasheets: 30 kW converter **done** (PM100 7.5 kg, Deye 80 kg). Still needed: a 6 kW inverter and a 10 kWh pack at ≥166 Wh/kg pack-level. Record in `SOURCE_VERIFICATION.md`.
 5. Page/figure locators: S01 and S05 **abstract-verified**; S09, S04, N01, N02, N08 pending.
 6. Run `screening.py` and `limits.py`; archive the outputs. **Done; both pass.**
